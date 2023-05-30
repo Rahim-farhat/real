@@ -6,7 +6,7 @@ const data = {
       where: 'Tunis/theThingsLand',
       owner: 'someone',
       date: '10',
-      image: '/images/p1.jpg',
+      //image: '/images/p1.jpg',
     },
     {
       name: 'THIS IS n°2',
@@ -14,7 +14,7 @@ const data = {
       where: 'Sousse/theThingsLand',
       owner: 'an other one',
       date: '20',
-      image: '/images/p2.jpg',
+      //image: '/images/p2.jpg',
     },
     {
       name: 'THIS IS n°3',
@@ -22,7 +22,7 @@ const data = {
       where: 'Meri5/theThingsLand',
       owner: 'an other one',
       date: '30',
-      image: '/images/p3.jpg',
+      //image: '/images/p3.jpg',
     },
   ],
 };
