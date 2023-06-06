@@ -1,14 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //import data from '../data';
 import axios from 'axios';
 
 function HomeScreen() {
+  /*
+  const [joke, setJoke] = useState('');
+  const getJoke = () => {
+    axios.get('http://localhost:5000/api/events').then((response) => {
+      console.log(response);
+      setJoke(response.data.setup);
+    });
+  };
+  */
+
   const [events, setEvents] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/events');
+        const response = await axios.get('http://localhost:5000/api/events');
         setEvents(response.data);
       } catch (error) {
         console.log(error);
