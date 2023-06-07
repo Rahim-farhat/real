@@ -24,6 +24,30 @@ const data = {
       date: '30',
       //image: '/images/p3.jpg',
     },
+    {
+      name: 'THIS IS n°3',
+      slug: 'ev3-name',
+      where: 'Meri5/theThingsLand',
+      owner: 'an other one',
+      date: '30',
+      //image: '/images/p3.jpg',
+    },
+    {
+      name: 'THIS IS n°3',
+      slug: 'ev3-name',
+      where: 'Meri5/theThingsLand',
+      owner: 'an other one',
+      date: '30',
+      //image: '/images/p3.jpg',
+    },
+    {
+      name: 'THIS IS n°3',
+      slug: 'ev3-name',
+      where: 'Meri5/theThingsLand',
+      owner: 'an other one',
+      date: '30',
+      //image: '/images/p3.jpg',
+    },
   ],
 };
 
