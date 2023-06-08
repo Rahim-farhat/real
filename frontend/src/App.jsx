@@ -4,13 +4,19 @@ import SpecificScreen from './screens/SpecificScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
         <header>
-          <Navbar bg="dark" variant="dark" style={{ marginTop: '0' }}>
+          <Navbar
+            bg="dark"
+            variant="dark"
+            fixed="top"
+            style={{ marginTop: '0' }}
+          >
             <Container>
               <LinkContainer to="/">
                 <Navbar.Brand>My App</Navbar.Brand>
@@ -19,10 +25,11 @@ function App() {
           </Navbar>
         </header>
         <main>
-          <Container>
+          <Container className="mt-5">
             <Routes>
               <Route path="/event/:slug" element={<SpecificScreen />} />
-              <Route path="/" element={<HomeScreen />}></Route>
+              <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
         </main>

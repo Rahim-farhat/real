@@ -65,6 +65,10 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.small-container {
+  max-width: 100%;
+}
 /*
 button {
   border-radius: 8px;

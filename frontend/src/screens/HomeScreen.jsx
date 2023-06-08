@@ -2,6 +2,9 @@ import { useReducer, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //import data from '../data';
 import axios from 'axios';
+import LoadingBox from '../../components/loadingBox';
+import MessageBox from '../../components/messageBox';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,11 +42,14 @@ function HomeScreen() {
 
   return (
     <div>
+      <Helmet>
+        <title>MyApp Obviously</title>
+      </Helmet>
       <h1>Featured Events</h1>
       {loading ? (
-        <p>Loading...</p>
+        <LoadingBox />
       ) : error ? (
-        <p>Error: {error}</p>
+        <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="events">
           {events.map((event) => (
