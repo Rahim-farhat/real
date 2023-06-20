@@ -1,6 +1,5 @@
-import { useReducer, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-//import data from '../data';
+import { useEffect, useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import LoadingBox from '../../components/loadingBox';
 import MessageBox from '../../components/messageBox';
@@ -17,46 +16,42 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true };
-    case 'FETCH_SUCCESS':
-      return { ...state, events: action.payload, loading: false };
-    case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
+function CategoryScreen() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const category = queryParams.get('category');
 
-function HomeScreen() {
-  const [{ loading, error, events }, dispatch] = useReducer(reducer, {
-    events: [],
-    loading: true,
-    error: '',
-  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const response = await axios.get('http://localhost:5000/api/events');
-        dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
+        setLoading(true);
+        const response = await axios.get(
+          'http://localhost:5000/api/events/search',
+          {
+            params: { category },
+          }
+        );
+        setEvents(response.data);
+        setLoading(false);
       } catch (error) {
-        dispatch({ type: 'FETCH_FAIL', payload: error.message });
+        setError('Error fetching events.');
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, [category]);
 
   return (
     <div>
       <Helmet>
-        <title>MyApp Obviously</title>
+        <title>{`${category} Events`}</title>
       </Helmet>
-      <h1>Featured Events</h1>
+      <h1>{`${category} Events`}</h1>
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -162,4 +157,5 @@ function HomeScreen() {
     </div>
   );
 }
-export default HomeScreen;
+
+export default CategoryScreen;

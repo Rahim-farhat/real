@@ -22,8 +22,8 @@
 }
 */
 .events {
-  padding: 10px;
-  background-color: white;
+  padding: 0px;
+  background-color: #d9ede8;
   display: flex;
   flex-direction: column;
 
@@ -34,36 +34,62 @@
 }
 
 .event {
-  background-color: LightGray;
-  border: 1px black solid;
+  background-color: white;
+  border: 2px grey solid;
   margin-top: 0px;
-  padding: 10px;
-}
 
+  padding-right: 0px;
+}
+.ev-details {
+  padding-bottom: 0px;
+
+  padding-right: 0px;
+}
+.up {
+  border: 1px grey solid;
+  background-color: MintCream;
+  margin: 0px;
+  padding: 1vw;
+}
+.up:hover {
+  background-color: rgb(238, 238, 238);
+}
+.down {
+  border: 1px grey solid;
+  margin: 0px;
+}
+.mid {
+  background-color: Gainsboro;
+  border: 1px grey solid;
+  margin: 0px;
+}
 .title {
   color: black;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+/*
 .location {
   display: flex;
   width: 100%;
   align-items: flex-start;
   flex-direction: row;
-}
-
-.location h6 {
+}S
+*/
+.location h5 {
   margin-left: 0px;
-
+  padding-left: 10px;
   word-break: break-all;
+  margin-right: 0px;
+  padding-right: 0px;
 
   width: fit-content;
 }
+
 .icon {
-  margin-left: 20px;
-  padding-right: 0px;
+  margin-left: 15px;
+  padding-right: 2px;
   width: 20px;
   height: 20px;
 }
@@ -82,36 +108,60 @@
   margin-left: 0px;
   padding-left: 0px;
 }
+.vertical-line {
+  max-width: 1px;
+  height: 100px; /* Adjust the height as needed */
+  background-color: black;
+}
 
 .day {
-  color: #c03;
-  font-family: 'Oswald', sans-serif;
-  font-size: 55px;
-  width: 55px;
-  height: 57px;
+  color: red;
+  font-size: 50px;
+
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  letter-spacing: -3px;
 }
 
 .month {
-  color: #c03;
-  font-family: 'Oswald', sans-serif;
+  color: red;
   font-size: 30px;
-  width: 55px;
-  height: 35px;
-  margin: 0 auto;
+
+  margin: 0;
+  padding: 0;
 }
 
 .year {
-  color: #c03;
-  font-family: 'Oswald', sans-serif;
+  color: red;
   font-size: 20px;
-  width: 55px;
+
   font-weight: bold;
   padding-left: 5px;
+  margin: 0 auto;
 }
 .date {
-  margin: 0 auto;
-  background-color: #24e689;
+  padding: 0px;
+  margin: auto;
   text-align: center;
+  background-color: antiquewhite;
+  line-height: 1;
+  border-top: 5px solid red;
+  border-bottom: 5px double #ff6550;
+  width: fit-content;
+}
+.image {
+  width: 95%;
+  margin: 10px auto;
+  border-radius: 26px 26px 26px 26px;
+  -webkit-border-radius: 26px 26px 26px 26px;
+  -moz-border-radius: 26px 26px 26px 26px;
+}
+
+.type {
+  text-align: center;
+  border: 1px grey solid;
+  padding: 5px;
 }
 /*
 a {
@@ -177,10 +227,14 @@ h1 {
   margin-left: 15px;
   flex-basis: auto;
   color: white;
-  font-weight: bold;
-  background-color: #24e689;
-  padding: 5px; /* Adjust the spacing between categories */
+  font-weight: 500;
+  background-color: rgb(24, 209, 138);
+  padding: 7px; /* Adjust the spacing between categories */
   width: fit-content;
+  border-radius: 4px 4px 0px 0px;
+  -webkit-border-radius: 4px 4px 0px 0px;
+  -moz-border-radius: 4px 4px 0px 0px;
+  letter-spacing: 1px;
 }
 
 .humburger {
@@ -191,6 +245,14 @@ h1 {
 .toggle {
   width: 50px;
   height: 50px;
+}
+
+.catego {
+  border-top: 1px solid #000000;
+  padding-left: 10px;
+}
+.catego:hover {
+  background-color: lightblue;
 }
 
 /*
@@ -285,11 +347,107 @@ button:focus-visible {
   height: fit-content;
 }
 */
+.topSp {
+  margin: 0 auto;
+  padding: 10px;
+  padding-top: 0px;
+  background-color: whitesmoke;
+}
+.head {
+  border-top: 10px double black;
+  border-bottom: 10px double black;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+}
+.mainimg {
+  margin: 0 auto;
+  padding: 10px;
+  background-color: whitesmoke;
+}
 
+.right {
+  padding-top: 20px;
+}
+.left {
+  padding: 10px;
+}
+.titleSp {
+  font-size: 40px;
+  background-color: white;
+  font-weight: bold;
+}
+.infoline {
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.info {
+  font-size: 20px;
+  padding: 5px;
+}
+.iconSp {
+  margin-left: 15px;
+  padding-right: 2px;
+  width: 30px;
+  height: 30px;
+}
+.time {
+  padding-top: 20px;
+  padding: 0;
+  width: fit-content;
+  margin: 10px auto;
+}
+.dateSp {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
+  text-align: center;
+  line-height: 1;
+  border-top: 2px solid red;
+  border-bottom: 2px double red;
+}
+.daySp {
+  color: red;
+  font-size: 60px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  letter-spacing: -5px;
+}
+.midSp {
+  margin: 0 auto;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+.typedet {
+  font-size: 25px;
+  border: 1px grey solid;
+  margin: 0;
+}
+.register {
+  padding-top: 20px;
+  padding: 0;
+  margin: 10px auto;
+}
 @media screen and (max-width: 1000px) {
   .events {
     width: 100%;
-    background-color: red;
+  }
+  .day {
+    font-size: 38px;
+  }
+  .daySp {
+    font-size: 38px;
+  }
+  .month {
+    font-size: 20px;
+  }
+  .title {
+    font-size: 30px;
   }
 }
 /*
@@ -301,3 +459,34 @@ button:focus-visible {
   }
 
   */
+.Features {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /*padding-top:15vh;
+    padding-left:10vw;*/
+}
+.bloc {
+  background-color: white;
+
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.log {
+  width: 7vw;
+  height: 7vw;
+  background-color: white;
+  border-radius: 7px;
+  padding: 2px;
+  margin-right: 10px;
+}
+.vl {
+  border-left: 1px solid black;
+  height: 15vw;
+  margin: 1px;
+  padding: 1px;
+}

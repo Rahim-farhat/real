@@ -21,7 +21,6 @@ const app = express();
 
 app.use('/api/seed', seedRouter);
 const port = process.env.PORT || 5000;
-
 app.use(cors());
 
 app.use('/api/events', eventRouter);

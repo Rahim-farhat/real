@@ -6,54 +6,42 @@ import Nav from 'react-bootstrap/Nav';
 import { toast } from 'react-toastify';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getError } from './utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faSearch } from '@fortawesome/free-solid-svg-icons';
 //import Button from 'react-bootstrap/Button';
 //import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+//import Form from 'react-bootstrap/Form';
 //import Nav from 'react-bootstrap/Nav';
 //import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+//import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import CategoryScreen from './screens/CategoryScreen';
+//import Row from 'react-bootstrap/Row';
+//import Col from 'react-bootstrap/Col';
+//import SearchBox from '../components/SearchBox';
+//import SearchScreen from './screens/SearchScreen';
 
 function App() {
   //const fullBox = true;
   //const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
-  //const [categories, setCategories] = useState([]);
-  /*
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
-    
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/events/categories`);
+        const { data } = await axios.get(
+          `http://localhost:5000/api/events/categories`
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
       }
     };
     fetchCategories();
-  }, []);
-  */
-
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 1100); // Adjust the breakpoint as needed
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
   const expand = 'false';
@@ -68,29 +56,7 @@ function App() {
                   <Navbar.Brand className="logo">My App</Navbar.Brand>
                 </LinkContainer>
 
-                <div className="d-none d-sm-block">
-                  <Form className="d-flex">
-                    <Row>
-                      <Col sm={8}>
-                        <Form.Control
-                          type="search"
-                          placeholder="Search"
-                          className="me-2"
-                          aria-label="Search"
-                        />
-                      </Col>
-                      <Col sm={3}>
-                        <Button variant="success">
-                          {isSmallScreen ? (
-                            <FontAwesomeIcon icon={faSearch} />
-                          ) : (
-                            'Search'
-                          )}
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </div>
+                <div className="d-none d-sm-block">{/*<SearchBox />*/}</div>
                 <Navbar.Toggle
                   aria-controls={`offcanvasNavbar-expand-${expand}`}
                   className="toggle"
@@ -105,45 +71,20 @@ function App() {
                   <Offcanvas.Title>Categories</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <div className="d-sm-none">
-                    <Form className="d-flex">
-                      <Row>
-                        <Col sm={8}>
-                          <Form.Control
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                          />
-                        </Col>
-                        <Col sm={4}>
-                          <Button variant="success">
-                            {isSmallScreen ? (
-                              <FontAwesomeIcon icon={faSearch} />
-                            ) : (
-                              'Search'
-                            )}
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Form>
-                  </div>
-
+                  <div className="d-sm-none">{/*<SearchBox />*/}</div>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link href="#action1">Home</Nav.Link>
-                    <Nav.Link href="#action2">Link</Nav.Link>
-                    <NavDropdown title="Dropdown">
-                      <NavDropdown.Item href="#action3">
-                        Action
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action4">
-                        Another action
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
-                        Something else here
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                    {categories.map((category) => (
+                      <Nav.Item key={category}>
+                        <LinkContainer
+                          to={{
+                            pathname: '/search',
+                            search: `category=${category}`,
+                          }}
+                        >
+                          <Nav.Link className="catego">{category}</Nav.Link>
+                        </LinkContainer>
+                      </Nav.Item>
+                    ))}
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
@@ -156,6 +97,8 @@ function App() {
           <Routes>
             <Route path="/event/:slug" element={<SpecificScreen />} />
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/search" element={<CategoryScreen />} />
+            {/*<Route path="/search" element={<SearchScreen />} />*/}
           </Routes>
         </Container>
       </main>
