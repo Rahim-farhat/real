@@ -42,14 +42,13 @@
 }
 .ev-details {
   padding-bottom: 0px;
-
   padding-right: 0px;
 }
 .up {
   border: 1px grey solid;
   background-color: MintCream;
   margin: 0px;
-  padding: 1vw;
+  padding: 0px;
 }
 .up:hover {
   background-color: rgb(238, 238, 238);
@@ -65,6 +64,7 @@
 }
 .title {
   color: black;
+  font-size: 35px;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -116,7 +116,7 @@
 
 .day {
   color: red;
-  font-size: 50px;
+  font-size: 35px;
 
   margin: 0 auto;
   padding: 0;
@@ -126,7 +126,7 @@
 
 .month {
   color: red;
-  font-size: 30px;
+  font-size: 20px;
 
   margin: 0;
   padding: 0;
@@ -141,6 +141,7 @@
   margin: 0 auto;
 }
 .date {
+  background-color: blueviolet;
   padding: 0px;
   margin: auto;
   text-align: center;
@@ -151,11 +152,12 @@
   width: fit-content;
 }
 .image {
-  width: 95%;
-  margin: 10px auto;
-  border-radius: 26px 26px 26px 26px;
-  -webkit-border-radius: 26px 26px 26px 26px;
-  -moz-border-radius: 26px 26px 26px 26px;
+  margin: auto auto;
+  height: 110%;
+  width: 100%;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
 }
 
 .type {

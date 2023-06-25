@@ -81,7 +81,16 @@ function HomeScreen() {
                   className="text-decoration-none"
                 >
                   <Row className="up">
-                    <Col xs={9} className="ev-details">
+                    <Col xs={2} className="d-flex align-items-center">
+                      <div className="mx-0">
+                        <img
+                          src={event.image}
+                          alt={event.name}
+                          className="image"
+                        />
+                      </div>
+                    </Col>
+                    <Col xs={8} className="ev-details">
                       <Row className="text-decoration-none">
                         <h1 className="title">{event.name}</h1>
                       </Row>
@@ -108,7 +117,7 @@ function HomeScreen() {
                       </Row>
                     </Col>
 
-                    <Col xs={3} className="date">
+                    <Col xs={2} className="date">
                       {event.start_d === event.end_d ? (
                         <div className="day">{event.start_d}</div>
                       ) : (
@@ -150,9 +159,6 @@ function HomeScreen() {
                       )}
                     </Col>
                   ))}
-                </Row>
-                <Row className="down">
-                  <img className="image" src={event.image} alt={event.name} />
                 </Row>
               </div>
             </Container>
