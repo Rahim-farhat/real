@@ -33,9 +33,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/api/events/categories`
-        );
+        const { data } = await axios.get(`/api/events/categories`);
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
@@ -53,7 +51,7 @@ function App() {
             <Container fluid>
               <Container className="topo">
                 <LinkContainer to="/">
-                  <Navbar.Brand className="logo">My App</Navbar.Brand>
+                  <Navbar.Brand className="logo">My New App</Navbar.Brand>
                 </LinkContainer>
 
                 <div className="d-none d-sm-block">{/*<SearchBox />*/}</div>

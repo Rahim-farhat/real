@@ -41,7 +41,7 @@ function HomeScreen() {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const response = await axios.get('http://localhost:5000/api/events');
+        const response = await axios.get('/api/events');
         dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', payload: error.message });

@@ -54,7 +54,7 @@ export default function SearchScreen() {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/events/search?page=${page}&query=${query}&category=${category}&order=${order}`
+          `/api/events/search?page=${page}&query=${query}&category=${category}&order=${order}`
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
