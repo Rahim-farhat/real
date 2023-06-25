@@ -1,7 +1,7 @@
 const data = {
   events: [
     {
-      name: 'La 7ème édition de Tunisia Digital Summit',
+      name: '1La 7ème édition de Tunisia Digital Summit',
       slug: 'La 7ème édition de Tunisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -20,7 +20,45 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'THIS is must be two',
+      name: '2hello',
+      slug: 'hello',
+      where: 'Tunis /theThingsLand',
+      categories: ['Entrepreneurship', 'Science/Education', 'Sports'],
+      types: ['competition', 'presentation', 'workshops'],
+      owner: 'someone',
+      target: 'Anyone',
+      price: 'Free Entry',
+      start_d: 7,
+      end_d: 28,
+      start_m: 'June',
+      end_m: 'June',
+      time: '08:30 AM',
+      year: 2023,
+
+      image:
+        'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
+    },
+    {
+      name: '3bye',
+      slug: 'bye',
+      where: 'Tunis /theThingsLand',
+      categories: ['Science/Education', 'an other'],
+      types: ['competition', 'presentation', 'workshops'],
+      owner: 'someone',
+      target: 'Anyone',
+      price: 'Free Entry',
+      start_d: 7,
+      end_d: 28,
+      start_m: 'June',
+      end_m: 'June',
+      time: '08:30 AM',
+      year: 2023,
+
+      image:
+        'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
+    },
+    {
+      name: '4THIS is must be two',
       slug: 'yestwo',
       where: 'Meri5 /theThingsLand',
       categories: ['Entrepreneurship', 'Science/Education'],
@@ -33,7 +71,7 @@ const data = {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmkQE_8OZ6ClPL8TMf9z3OXMibJAMzDnLkOzjiLTedofJ2VUJv52wYOxsRhQSAq7q9YXE',
     },
     {
-      name: 'ISGIS ROBOTS V2.0',
+      name: '5ISGIS ROBOTS V2.0',
       slug: 'ISGIS ROBOTS V2.0',
       where: 'Sfax /Institut Supérieur de Gestion Industrielle - ISGI',
       categories: ['Entrepreneurship', 'Science/Education'],
@@ -52,7 +90,7 @@ const data = {
         'https://scontent.ftun9-1.fna.fbcdn.net/v/t39.30808-6/351345147_215591367954895_4461765145874775302_n.jpg?stp=dst-jpg_s960x960&_nc_cat=100&ccb=1-7&_nc_sid=340051&_nc_ohc=c4dwrdTwa70AX8cDZT9&_nc_ht=scontent.ftun9-1.fna&oh=00_AfBQIkt1GtQJcICYcGZmvieX8hsurl_u7GJ0iZSw3tKzYA&oe=649090D0',
     },
     {
-      name: 'AI4Good Summer Incubator',
+      name: '6AI4Good Summer Incubator',
       slug: 'AI4Good Summer Incubator',
       where: 'Online event',
       categories: ['Entrepreneurship', 'Science/Education'],
@@ -71,7 +109,7 @@ const data = {
         'https://scontent.ftun9-1.fna.fbcdn.net/v/t39.30808-6/344584757_902523014377891_1966468191493688448_n.jpg?stp=dst-jpg_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=340051&_nc_ohc=WlhtdT-3p6AAX-sNheG&_nc_ht=scontent.ftun9-1.fna&oh=00_AfC-9wPn3xLQuGvwSCa0Nd7Rm6oHiL_A-tbPP-IxGo3QMQ&oe=6492771F',
     },
     {
-      name: 'THIS IS n°2',
+      name: '7THIS IS n°2',
       slug: 'ev2-name',
       where: 'Sousse /theThingsLand',
       categories: ['category1', 'category2', 'Entrepreneurship'],
@@ -88,7 +126,7 @@ const data = {
       //image: '/images/p2.jpg',
     },
     {
-      name: 'THIS IS n°32',
+      name: '8THIS IS n°32',
       slug: 'ev32-name',
       where: 'Meri5o /theThingsLand',
       categories: ['category1', 'category2'],
@@ -105,7 +143,7 @@ const data = {
       //image: '/images/p3.jpg',
     },
     {
-      name: 'THIS IS n°4',
+      name: '9THIS IS n°4',
       slug: 'ev4-name',
       where: 'Meri5 /theThingsLand',
       categories: ['category1', 'category2'],
@@ -117,7 +155,7 @@ const data = {
       //image: '/images/p3.jpg',
     },
     {
-      name: 'THIS IS n°5',
+      name: '10THIS IS n°5',
       slug: 'ev5-name',
       where: 'Meri5/theThingsLand',
       categories: ['category1', 'category2'],
@@ -129,7 +167,7 @@ const data = {
       //image: '/images/p3.jpg',
     },
     {
-      name: 'THIS IS n°6',
+      name: '11THIS IS n°6',
       slug: 'ev6-name',
       where: 'Meri5/theThingsLand',
       categories: ['category1', 'category2'],
@@ -141,7 +179,7 @@ const data = {
       //image: '/images/p3.jpg',
     },
     {
-      name: 'La1323 7ème édition ddhgfhe Tunisia888888 Digital Summit',
+      name: '12La1323 7ème édition ddhgfhe Tunisia888888 Digital Summit',
       slug: 'La 7ème édition de Tunisia Digital Summitdsvsd',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -160,7 +198,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'sdfsdfsdfion de Tunisia Digital Summit',
+      name: '13sdfsdfsdfion de Tunisia Digital Summit',
       slug: 'La 7ème édition de Tunisia Digital Sfgdfdgummit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -179,7 +217,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'Ladfgfdon de Tunisia Digital Summit',
+      name: '14Ladfgfdon de Tunisia Digital Summit',
       slug: 'La 7ème éddsfgsdfgition de Tunisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -198,7 +236,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'La 7ème éditiofghfghfghe Tunisia Digital Summit',
+      name: '15La 7ème éditiofghfghfghe Tunisia Digital Summit',
       slug: 'La 7èmedfgssgsg édition de Tunisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -217,7 +255,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'La 7ègfhfghfghon de Tunisia Digital Summit',
+      name: '16La 7ègfhfghfghon de Tunisia Digital Summit',
       slug: 'La 7ème ésdfgsdfgfdgdition de Tunisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -236,7 +274,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'La 7ème édition de Tunisia Digifghfghfghummit',
+      name: '17La 7ème édition de Tunisia Digifghfghfghummit',
       slug: 'La 7ème édsfdgfdsgdsgition de Tfdgdfsunisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -255,7 +293,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'La 7ème édition de Tunisia Dghfhfghfghummit',
+      name: '18La 7ème édition de Tunisia Dghfhfghfghummit',
       slug: 'La 7èsdfge édition de Tunisia Dsdfgsdfigital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -274,7 +312,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'La 7ème édfghfghfghDigital Summit',
+      name: '19La 7ème édfghfghfghDigital Summit',
       slug: 'La 7èmehgjgfhj édition de Tunisia Dghjfhgjigital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
@@ -293,7 +331,7 @@ const data = {
         'https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/352180837_662498392378028_6268851799442282251_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=JfAggZzmkXEAX976xKG&_nc_ht=scontent.ftun10-1.fna&oh=00_AfDYtVtdY62dBTLZHz1JCBwxxo9AGUFemoy-WanURHIg_Q&oe=6490D180',
     },
     {
-      name: 'La 7hfghfghgfe édition de 4Tunisia Digital Summit',
+      name: '20La 7hfghfghgfe édition de 4Tunisia Digital Summit',
       slug: 'La 7èertrzetezrtme édition de Tuntyryrtyisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
