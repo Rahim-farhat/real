@@ -2,7 +2,7 @@ const data = {
   events: [
     {
       name: '1La 7ème édition de Tunisia Digital Summit',
-      slug: 'La 7ème édition de Tunisia Digital Summit',
+      slug: '1La 7ème édition de Tunisia Digital Summit',
       where: 'Tunis /theThingsLand',
       categories: ['category1', 'category3'],
       types: ['competition', 'presentation', 'workshops'],
