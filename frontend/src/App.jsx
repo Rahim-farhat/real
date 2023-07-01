@@ -53,7 +53,9 @@ function App() {
             <Container fluid>
               <Container className="topo">
                 <LinkContainer to="/">
-                  <Navbar.Brand className="logo">My Newest App</Navbar.Brand>
+                  <Navbar.Brand className="logo">
+                    My Newest App ever
+                  </Navbar.Brand>
                 </LinkContainer>
 
                 <div className="d-none d-sm-block">{/*<SearchBox />*/}</div>
