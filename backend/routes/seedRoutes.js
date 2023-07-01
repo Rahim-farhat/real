@@ -5,7 +5,7 @@ import data from '../data.js';
 const seedRouter = express.Router();
 
 seedRouter.get('/', async (req, res) => {
-  await Event.deleteMany({});
+  await Event.remove({});
   const createdEvents = await Event.insertMany(data.events);
   res.send({ createdEvents });
 });
