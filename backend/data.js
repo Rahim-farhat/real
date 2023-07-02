@@ -1,4 +1,4 @@
-const data = {
+/*const data = {
   events: [
     {
       name: '1La 7ème édition de Tunisia Digital Summit',
@@ -156,3 +156,4 @@ const data = {
 };
 
 export default data;
+*/

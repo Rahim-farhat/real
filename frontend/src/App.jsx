@@ -54,7 +54,7 @@ function App() {
               <Container className="topo">
                 <LinkContainer to="/">
                   <Navbar.Brand className="logo">
-                    My Newest App ever
+                    My Newest App Ever
                   </Navbar.Brand>
                 </LinkContainer>
 
