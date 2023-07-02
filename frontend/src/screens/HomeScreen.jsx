@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faCrown,
   faMapMarkerAlt,
   faPersonChalkboard,
   faScrewdriverWrench,
@@ -115,6 +116,14 @@ function HomeScreen() {
                         </Col>
                         <Col xs={10} sm={11}>
                           <h6 className="ml-2">{event.owner}</h6>
+                        </Col>
+                      </Row>
+                      <Row className="location">
+                        <Col xs={2} sm={1}>
+                          <FontAwesomeIcon icon={faCrown} className="icon" />
+                        </Col>
+                        <Col xs={10} sm={11}>
+                          <h6 className="ml-2">{event.sponsors}</h6>
                         </Col>
                       </Row>
                     </Col>
