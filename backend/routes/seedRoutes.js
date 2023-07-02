@@ -1,3 +1,4 @@
+/*
 import express from 'express';
 import Event from '../models/eventModel.js';
 import data from '../data.js';
@@ -16,3 +17,4 @@ seedRouter.get('/', async (req, res) => {
 });
 
 export default seedRouter;
+*/

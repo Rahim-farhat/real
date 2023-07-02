@@ -4,7 +4,7 @@ import cors from 'cors';
 //import data from './data.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import seedRouter from './routes/seedRoutes.js';
+//import seedRouter from './routes/seedRoutes.js';
 import eventRouter from './routes/eventRoutes.js';
 
 dotenv.config();
@@ -20,7 +20,7 @@ mongoose
 
 const app = express();
 
-app.use('/api/seed', seedRouter);
+//app.use('/api/seed', seedRouter);
 
 app.use(cors());
 
