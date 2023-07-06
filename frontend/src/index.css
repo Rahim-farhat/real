@@ -42,7 +42,6 @@
 .ev-details {
   padding-bottom: 0px;
   padding-right: 0px;
-  background-color: #ff6550;
   margin: 0 auto;
   padding: 10px;
   padding-right: 0px;
@@ -122,8 +121,8 @@
 .icon {
   margin-left: 15px;
   padding-right: 2px;
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
 }
 .owner {
   display: flex;
