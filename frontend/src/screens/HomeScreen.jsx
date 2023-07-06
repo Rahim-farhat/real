@@ -61,7 +61,6 @@ function HomeScreen() {
       <Helmet>
         <title>MyApp Obviously</title>
       </Helmet>
-      <h1>Featured Events</h1>
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -85,7 +84,7 @@ function HomeScreen() {
                   <h1 className="title">{event.name}</h1>
                 </Row>
                 <Row>
-                  <Col xs={4} className="d-flex align-items-center">
+                  <Col xs={7} className="d-flex align-items-center">
                     <div className="mx-0">
                       <img
                         src={event.image}
@@ -94,7 +93,7 @@ function HomeScreen() {
                       />
                     </div>
                   </Col>
-                  <Col xs={8} className="ev-details">
+                  <Col xs={5} className="ev-details">
                     <Row className="location">
                       <Col xs={2} sm={1}>
                         <FontAwesomeIcon
@@ -133,10 +132,10 @@ function HomeScreen() {
                     >
                       <Button className="seeMoreBt">
                         <div className="seeMore">
-                          <Col xs={10}>
+                          <Col xs={8}>
                             <h6 className="mt-2">See More</h6>
                           </Col>
-                          <Col xs={2}>
+                          <Col xs={4}>
                             <FontAwesomeIcon
                               icon={faCircleChevronRight}
                               className="icon"

@@ -23,6 +23,7 @@
 */
 .events {
   padding: 0px;
+  padding-top: 15px;
   background-color: #d9ede8;
   display: flex;
   flex-direction: column;
