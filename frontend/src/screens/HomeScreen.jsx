@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from 'react-bootstrap/Button';
 import {
   faCrown,
   faMapMarkerAlt,
@@ -16,6 +17,7 @@ import {
   faScrewdriverWrench,
   faTrophy,
   faUser,
+  faCircleChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
 const reducer = (state, action) => {
@@ -69,7 +71,7 @@ function HomeScreen() {
           {events.map((event) => (
             <Container fluid key={event.slug}>
               <Row xs={2} md={4} lg={6}>
-                <div className="categories" key={event.slug}>
+                <div className="categories overflow-hidden" key={event.slug}>
                   {event.categories.map((category) => (
                     <p className="category" key={category}>
                       {category}
@@ -78,77 +80,93 @@ function HomeScreen() {
                 </div>
               </Row>
 
-              <div className="event" key={event.slug}>
-                <Link
-                  to={`/event/${event.slug}`}
-                  className="text-decoration-none"
-                >
-                  <Row className="up">
-                    <Col xs={2} className="d-flex align-items-center">
-                      <div className="mx-0">
-                        <img
-                          src={event.image}
-                          alt={event.name}
-                          className="image"
+              <div className="event up" key={event.slug}>
+                <Row className="text-decoration-none">
+                  <h1 className="title">{event.name}</h1>
+                </Row>
+                <Row>
+                  <Col xs={4} className="d-flex align-items-center">
+                    <div className="mx-0">
+                      <img
+                        src={event.image}
+                        alt={event.name}
+                        className="image"
+                      />
+                    </div>
+                  </Col>
+                  <Col xs={8} className="ev-details">
+                    <Row className="location">
+                      <Col xs={2} sm={1}>
+                        <FontAwesomeIcon
+                          icon={faMapMarkerAlt}
+                          className="icon"
                         />
+                      </Col>
+                      <Col xs={10} sm={11}>
+                        <h6 className="ml-2">{event.where}</h6>
+                      </Col>
+                    </Row>
+
+                    <Row className="location">
+                      <Col xs={2} sm={1}>
+                        <FontAwesomeIcon icon={faUser} className="icon" />
+                      </Col>
+                      <Col xs={10} sm={11}>
+                        <h6 className="ml-2">{event.owner}</h6>
+                      </Col>
+                    </Row>
+                    <Row className="location">
+                      <Col xs={2} sm={1}>
+                        <FontAwesomeIcon icon={faCrown} className="icon" />
+                      </Col>
+                      <Col xs={10} sm={11}>
+                        <h6 className="ml-2">{event.sponsors}</h6>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row className="middle">
+                  <Col>
+                    <Link
+                      to={`/event/${event.slug}`}
+                      className="text-decoration-none "
+                    >
+                      <Button className="seeMoreBt">
+                        <div className="seeMore">
+                          <Col xs={10}>
+                            <h6 className="mt-2">See More</h6>
+                          </Col>
+                          <Col xs={2}>
+                            <FontAwesomeIcon
+                              icon={faCircleChevronRight}
+                              className="icon"
+                            />
+                          </Col>
+                        </div>
+                      </Button>
+                    </Link>
+                  </Col>
+                  <Col className="date">
+                    {event.start_d === event.end_d ? (
+                      <div className="day">{event.start_d}</div>
+                    ) : (
+                      <div className="day">
+                        {event.start_d}-{event.end_d}
                       </div>
-                    </Col>
-                    <Col xs={8} className="ev-details">
-                      <Row className="text-decoration-none">
-                        <h1 className="title">{event.name}</h1>
-                      </Row>
+                    )}
 
-                      <Row className="location">
-                        <Col xs={2} sm={1}>
-                          <FontAwesomeIcon
-                            icon={faMapMarkerAlt}
-                            className="icon"
-                          />
-                        </Col>
-                        <Col xs={10} sm={11}>
-                          <h6 className="ml-2">{event.where}</h6>
-                        </Col>
-                      </Row>
+                    {event.start_m === event.end_m ? (
+                      <div className="month">{event.start_m}</div>
+                    ) : (
+                      <div className="month">
+                        {event.start_m}/{event.end_m}
+                      </div>
+                    )}
 
-                      <Row className="location">
-                        <Col xs={2} sm={1}>
-                          <FontAwesomeIcon icon={faUser} className="icon" />
-                        </Col>
-                        <Col xs={10} sm={11}>
-                          <h6 className="ml-2">{event.owner}</h6>
-                        </Col>
-                      </Row>
-                      <Row className="location">
-                        <Col xs={2} sm={1}>
-                          <FontAwesomeIcon icon={faCrown} className="icon" />
-                        </Col>
-                        <Col xs={10} sm={11}>
-                          <h6 className="ml-2">{event.sponsors}</h6>
-                        </Col>
-                      </Row>
-                    </Col>
+                    <div className="year">{event.year}</div>
+                  </Col>
+                </Row>
 
-                    <Col xs={2} className="date">
-                      {event.start_d === event.end_d ? (
-                        <div className="day">{event.start_d}</div>
-                      ) : (
-                        <div className="day">
-                          {event.start_d}-{event.end_d}
-                        </div>
-                      )}
-
-                      {event.start_m === event.end_m ? (
-                        <div className="month">{event.start_m}</div>
-                      ) : (
-                        <div className="month">
-                          {event.start_m}/{event.end_m}
-                        </div>
-                      )}
-
-                      <div className="year">{event.year}</div>
-                    </Col>
-                  </Row>
-                </Link>
                 <Row className="mid">
                   {event.types.map((type) => (
                     <Col className="type" key={type}>
