@@ -8,6 +8,7 @@ const eventSchema = new mongoose.Schema(
     where: { type: String, required: true },
     categories: { type: [String], required: true },
     types: { type: [String], required: true },
+    faq: { type: Stringe },
     sponsors: { type: String },
     //category: { type: String, required: true },
     //description: { type: String, required: true },

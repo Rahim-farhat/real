@@ -84,7 +84,7 @@ function HomeScreen() {
                   <h1 className="title">{event.name}</h1>
                 </Row>
                 <Row>
-                  <Col xs={7} className="d-flex align-items-center">
+                  <Col xs={6} className="d-flex align-items-center">
                     <div className="mx-0">
                       <img
                         src={event.image}
@@ -93,7 +93,7 @@ function HomeScreen() {
                       />
                     </div>
                   </Col>
-                  <Col xs={5} className="ev-details">
+                  <Col xs={6} className="ev-details">
                     <Row className="location">
                       <Col xs={2} sm={1}>
                         <FontAwesomeIcon
@@ -125,6 +125,25 @@ function HomeScreen() {
                   </Col>
                 </Row>
                 <Row className="middle">
+                  <Col className="date">
+                    {event.start_d === event.end_d ? (
+                      <div className="day">{event.start_d}</div>
+                    ) : (
+                      <div className="day">
+                        {event.start_d}-{event.end_d}
+                      </div>
+                    )}
+
+                    {event.start_m === event.end_m ? (
+                      <div className="month">{event.start_m}</div>
+                    ) : (
+                      <div className="month">
+                        {event.start_m}/{event.end_m}
+                      </div>
+                    )}
+
+                    <div className="year">{event.year}</div>
+                  </Col>
                   <Col>
                     <Link
                       to={`/event/${event.slug}`}
@@ -144,25 +163,6 @@ function HomeScreen() {
                         </div>
                       </Button>
                     </Link>
-                  </Col>
-                  <Col className="date">
-                    {event.start_d === event.end_d ? (
-                      <div className="day">{event.start_d}</div>
-                    ) : (
-                      <div className="day">
-                        {event.start_d}-{event.end_d}
-                      </div>
-                    )}
-
-                    {event.start_m === event.end_m ? (
-                      <div className="month">{event.start_m}</div>
-                    ) : (
-                      <div className="month">
-                        {event.start_m}/{event.end_m}
-                      </div>
-                    )}
-
-                    <div className="year">{event.year}</div>
                   </Col>
                 </Row>
 

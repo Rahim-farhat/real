@@ -19,6 +19,7 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
+import marked from 'https://cdn.skypack.dev/marked@3.0.0';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -58,6 +59,7 @@ function SpecificScreen() {
 
     fetchData();
   }, [slug]);
+  const markdown = `${event.faq}`;
   return loading ? (
     <LoadingBox />
   ) : error ? (
@@ -77,39 +79,67 @@ function SpecificScreen() {
         <Row className="topSp">
           <Col md={10} className="left">
             <Row className="infoline">
-              <Col xs={2} sm={1}>
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="iconSp" />
-              </Col>
-              <Col xs={10} sm={11}>
-                <h6 className="ml-2 info">{event.where}</h6>
-              </Col>
+              <Row>
+                <Col xs={2} lg={1}>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="iconSp" />
+                </Col>
+                <Col xs={10} lg={11}>
+                  <h6 className="infotitle">Location</h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h6 className="info">{event.where}</h6>
+                </Col>
+              </Row>
             </Row>
             <Row className="infoline">
-              <Col xs={2} sm={1}>
-                <FontAwesomeIcon icon={faUser} className="iconSp" />
-              </Col>
-              <Col xs={10} sm={11}>
-                <h6 className="ml-2 info">{event.owner}</h6>
-              </Col>
+              <Row>
+                <Col xs={2} lg={1}>
+                  <FontAwesomeIcon icon={faUser} className="iconSp" />
+                </Col>
+                <Col xs={10} lg={11}>
+                  <h6 className="infotitle">Organized by</h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h6 className="info">{event.owner}</h6>
+                </Col>
+              </Row>
             </Row>
             <Row className="infoline">
-              <Col xs={2} sm={1}>
-                <FontAwesomeIcon
-                  icon={faArrowsDownToPeople}
-                  className="iconSp"
-                />
-              </Col>
-              <Col xs={10} sm={11}>
-                <h6 className="ml-2 info">{event.target}</h6>
-              </Col>
+              <Row>
+                <Col xs={2} lg={1}>
+                  <FontAwesomeIcon
+                    icon={faArrowsDownToPeople}
+                    className="iconSp"
+                  />
+                </Col>
+                <Col xs={10} lg={11}>
+                  <h6 className="infotitle">Target</h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h6 className="info">{event.target}</h6>
+                </Col>
+              </Row>
             </Row>
             <Row className="infoline">
-              <Col xs={2} sm={1}>
-                <FontAwesomeIcon icon={faMoneyBill1Wave} className="iconSp" />
-              </Col>
-              <Col xs={10} sm={11}>
-                <h6 className="ml-2 info">{event.price}</h6>
-              </Col>
+              <Row>
+                <Col xs={2} lg={1}>
+                  <FontAwesomeIcon icon={faMoneyBill1Wave} className="iconSp" />
+                </Col>
+                <Col xs={10} lg={11}>
+                  <h6 className="infotitle">Pricing</h6>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h6 className="info">{event.price}</h6>
+                </Col>
+              </Row>
             </Row>
           </Col>
           <Col md={2} className="right">
@@ -144,6 +174,28 @@ function SpecificScreen() {
               <Button>Register</Button>
             </Row>
           </Col>
+        </Row>
+        <Row className="det">
+          <h2>Details</h2>
+          <p>
+            If you want to create CSS 3D Text Effects and looking for good 3D
+            Text effects for it then you are in the right place. Here I have
+            created a lot of 3D text animation collections. These CSS 3D Text
+            Effects Examples are the best examples of the Internet. Here I have
+            shared the design of 3D Text CSS with the apples. We have given the
+            required source code and live preview. There are different types of
+            3D text effects here. Some CSS 3D Text Animation Effects are made by
+            basic code again made by some 3D Text Animation CSS Basic Code. If
+            you know basic HTML and CSS, you can easily create these CSS 3D Text
+            Effects.
+          </p>
+        </Row>
+        <Row className="det">
+          <h2>FAQ</h2>
+          <div
+            id="preview"
+            dangerouslySetInnerHTML={{ __html: marked(markdown) }}
+          ></div>
         </Row>
         <Row className="midSp">
           {event.types.map((type) => (

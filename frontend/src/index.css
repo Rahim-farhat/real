@@ -104,10 +104,6 @@
   padding: 0px;
 }
 
-.icon {
-  margin-left: 10px; /* Adjust the margin as needed */
-}
-
 .location h6 {
   font-size: 14px;
   margin-left: 0px;
@@ -120,7 +116,7 @@
 }
 
 .icon {
-  margin-left: 15px;
+  margin-left: 10px;
   padding-right: 2px;
   width: 17px;
   height: 17px;
@@ -153,7 +149,7 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  letter-spacing: -3px;
+  /*letter-spacing: -3px;*/
 }
 
 .month {
@@ -177,7 +173,7 @@
   margin: auto;
   text-align: center;
   line-height: 1;
-  border-left: 2px solid black;
+  border-right: 2px solid black;
 
   /*
   background-color: antiquewhite;
@@ -268,8 +264,8 @@ h1 {
   margin-left: 15px;
   flex-basis: auto;
   color: white;
-  font-weight: 500;
-  background-color: rgb(24, 209, 138);
+  font-weight: 600;
+  background-color: rgb(41, 183, 129);
   padding: 7px; /* Adjust the spacing between categories */
   width: fit-content;
   border-radius: 4px 4px 0px 0px;
@@ -395,8 +391,11 @@ button:focus-visible {
   background-color: whitesmoke;
 }
 .head {
+  /*
   border-top: 5px double black;
   border-bottom: 5px double black;
+  */
+  border-bottom: 5px solid black;
   margin: 0 auto;
   margin-top: 100px;
   padding: 20px;
@@ -415,6 +414,9 @@ button:focus-visible {
 .left {
   padding: 10px;
 }
+.left .infoline:last-child {
+  border-bottom: 2px solid black;
+}
 .titleSp {
   font-size: 20px;
   background-color: white;
@@ -425,12 +427,20 @@ button:focus-visible {
   /*
   border-bottom: 1px solid black;
   */
-  padding: 10px;
+  padding: 12px;
+  padding-bottom: 0px;
 }
-
+.infotitle {
+  font-weight: bolder;
+  margin-left: -15px;
+  margin-top: 1px;
+}
 .info {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 300;
   padding: 5px;
+  margin-left: 40px;
+  margin-top: 5px;
 }
 .iconSp {
   margin-left: 15px;
@@ -464,6 +474,13 @@ button:focus-visible {
 .midSp {
   margin: 0 auto;
   background-color: whitesmoke;
+  padding: 20px;
+}
+.det {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(245, 252, 253);
   padding: 20px;
 }
 .typedet {
