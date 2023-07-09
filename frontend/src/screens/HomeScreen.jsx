@@ -19,6 +19,7 @@ import {
   faUser,
   faCircleChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import ModalComponent from '../../components/imageFull';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -86,10 +87,9 @@ function HomeScreen() {
                 <Row>
                   <Col xs={6} className="d-flex align-items-center">
                     <div className="mx-0">
-                      <img
-                        src={event.image}
-                        alt={event.name}
-                        className="image"
+                      <ModalComponent
+                        imageUrl={event.image}
+                        altText={event.name}
                       />
                     </div>
                   </Col>

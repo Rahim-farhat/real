@@ -10,6 +10,8 @@ import Col from 'react-bootstrap/esm/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowsDownToPeople,
+  faCircleInfo,
+  faClipboardQuestion,
   faClock,
   faMapMarkerAlt,
   faMoneyBill1Wave,
@@ -176,7 +178,14 @@ function SpecificScreen() {
           </Col>
         </Row>
         <Row className="det">
-          <h2>Details</h2>
+          <Row>
+            <Col xs={2} lg={1}>
+              <FontAwesomeIcon icon={faCircleInfo} className="BigiconSp" />
+            </Col>
+            <Col xs={10} lg={11}>
+              <h2 className="Biginfotitle">Details</h2>
+            </Col>
+          </Row>
           <p>
             If you want to create CSS 3D Text Effects and looking for good 3D
             Text effects for it then you are in the right place. Here I have
@@ -190,13 +199,25 @@ function SpecificScreen() {
             Effects.
           </p>
         </Row>
-        <Row className="det">
-          <h2>FAQ</h2>
-          <div
-            id="preview"
-            dangerouslySetInnerHTML={{ __html: marked(markdown) }}
-          ></div>
-        </Row>
+        {markdown !== 'undefined' ? (
+          <Row className="det">
+            <Row>
+              <Col xs={2} lg={1}>
+                <FontAwesomeIcon
+                  icon={faClipboardQuestion}
+                  className="BigiconSp"
+                />
+              </Col>
+              <Col xs={10} lg={11}>
+                <h2 className="Biginfotitle">FAQ</h2>
+              </Col>
+            </Row>
+            <div
+              id="preview"
+              dangerouslySetInnerHTML={{ __html: marked(markdown) }}
+            ></div>
+          </Row>
+        ) : null}
         <Row className="midSp">
           {event.types.map((type) => (
             <Row key={type} className="m-0">
