@@ -14,10 +14,12 @@ import {
   faClipboardQuestion,
   faClock,
   faImages,
+  faMapLocationDot,
   faMapMarkerAlt,
   faMoneyBill1Wave,
   faPersonChalkboard,
   faScrewdriverWrench,
+  faTimeline,
   faTrophy,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
@@ -202,19 +204,55 @@ function SpecificScreen() {
               <h2 className="Biginfotitle">Details</h2>
             </Col>
           </Row>
-          <p>
-            If you want to create CSS 3D Text Effects and looking for good 3D
-            Text effects for it then you are in the right place. Here I have
-            created a lot of 3D text animation collections. These CSS 3D Text
-            Effects Examples are the best examples of the Internet. Here I have
-            shared the design of 3D Text CSS with the apples. We have given the
-            required source code and live preview. There are different types of
-            3D text effects here. Some CSS 3D Text Animation Effects are made by
-            basic code again made by some 3D Text Animation CSS Basic Code. If
-            you know basic HTML and CSS, you can easily create these CSS 3D Text
-            Effects.
-          </p>
+          <p>{event.details}</p>
         </Row>
+        <Row className="det">
+          <Row>
+            <Col xs={3} lg={1}>
+              <FontAwesomeIcon icon={faMapLocationDot} className="BigiconSp" />
+            </Col>
+            <Col xs={9} lg={11}>
+              <h2 className="Biginfotitle">Map</h2>
+            </Col>
+            <Row>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25498.690603299907!2d8.835013812935497!3d36.97790444763691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e4caa99b5afd43%3A0x82d5d6489207ccf5!2sBarkoukech%20Beach!5e0!3m2!1sen!2stn!4v1689178920597!5m2!1sen!2stn"
+                className="map"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </Row>
+          </Row>
+        </Row>
+        <Row className="det">
+          <Row>
+            <Col xs={3} lg={1}>
+              <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
+            </Col>
+            <Col xs={9} lg={11}>
+              <h2 className="Biginfotitle">Timeline</h2>
+            </Col>
+            <Row>
+              <div className="timeleinespace">
+                <ul className="timeline timeline-centered">
+                  {event.timeline.map((timeitem) => (
+                    <li className="timeline-item" key={timeitem}>
+                      <div className="timeline-info">
+                        <span>{timeitem.t_when}</span>
+                      </div>
+                      <div className="timeline-marker"></div>
+                      <div className="timeline-content">
+                        <h3 className="timeline-title">{timeitem.t_title}</h3>
+                        <p>{timeitem.t_details}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Row>
+          </Row>
+        </Row>
+
         <Row className="det">
           <Row>
             <Col xs={3} lg={1}>
