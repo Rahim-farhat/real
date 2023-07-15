@@ -11,8 +11,6 @@ const eventSchema = new mongoose.Schema({
   register: { type: String },
   faq: { type: String },
   details: { type: String },
-  register: { type: String },
-  sponsors: { type: String },
   timeline: {
     type: [
       {
