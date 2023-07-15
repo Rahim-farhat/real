@@ -13,14 +13,12 @@ import {
   faCircleInfo,
   faClipboardQuestion,
   faClock,
+  faHandshake,
   faImages,
   faMapLocationDot,
   faMapMarkerAlt,
   faMoneyBill1Wave,
-  faPersonChalkboard,
-  faScrewdriverWrench,
   faTimeline,
-  faTrophy,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
@@ -66,7 +64,7 @@ function SpecificScreen() {
     fetchData();
   }, [slug]);
   const markdown = `${event.faq}`;
-
+  /*
   const evento = {
     images: [
       'data:image/jpeg;base64,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LwbEhTemwvfcr9a/jOSx27c+ArszNR7wpgZslie8xAGUjUAAG421va8sOBpBWS3vFtuj731+MrmB4fjFxDXw7ZGAXOShtYnvWzXlowmHqgoChAF/DwYdCbbicuUvRMbO2bcE48UxCI7tkDgHO17LdTmudzv8Zr+ExVOogam6up2KkEfdMNblPimZz6o+pH0qeo8858/slj5d4ZxWgjqtJ0zPcksjMVVbKASxsup090vOY2blRjcpxpq0SA5bbF2ZcQraWKs1iTfcXB220tJ+ZWaayvYiJx0icvDiTRpk6kopJO/sidUBERAREQEREBERAREQEREBERAREQERPhiq4RC5BIUXIFr6eZAgfeJCnjoAINNs2ZgB3QCoJ71ydBYXN9oTjim/yb3AuQClhZWY6lh9Ui/jp0NgmokMOOJexRhrb6NrZioJuRYWAJvtmA6i/wCqfGF7NGZWBZSSugIKgXHeI33HiATsDAl4kXheKhzYU3HdLAkLY2JFhZtzY+7TfUT8Y7ipp1MuQN3kGj2IDZrki24y7C5IMCXiQVLjpY27O2oBOcEe0VJXS7C2Qiw72Y2vlM9bjbAEikWAVjdCWF1Zlt3V2IUkH7usCciRWE4k71MvZ2He74a66W9w8R773HQ2lYCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiBzcN+Zp/w0/KJ0xEBERAREQEREBERAREQEREBERAREQE8MRAREQEREAIiICIiAnsRAREQEREBERAREQEREBERAREQEREBERAREQP/2Q==',
@@ -78,7 +76,7 @@ function SpecificScreen() {
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQENh6NQifuwmn3QS3iOmyWwI2GW25r5vA9KP4BX9ALZ_Z7_THFag5PttZje68KYrVVHg&usqp=CAU',
     ],
   };
-
+*/
   return loading ? (
     <LoadingBox />
   ) : error ? (
@@ -191,79 +189,81 @@ function SpecificScreen() {
               </Col>
             </Row>
             <Row className="register">
-              <Button>Register</Button>
+              <a
+                href={event.register}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>Register</Button>
+              </a>
             </Row>
           </Col>
         </Row>
         <Row className="det">
           <Row>
-            <Col xs={3} lg={1}>
+            <div className="pich">
               <FontAwesomeIcon icon={faCircleInfo} className="BigiconSp" />
-            </Col>
-            <Col xs={9} lg={11}>
               <h2 className="Biginfotitle">Details</h2>
-            </Col>
+            </div>
           </Row>
+
           <p>{event.details}</p>
         </Row>
         <Row className="det">
           <Row>
-            <Col xs={3} lg={1}>
+            <div className="pich">
               <FontAwesomeIcon icon={faMapLocationDot} className="BigiconSp" />
-            </Col>
-            <Col xs={9} lg={11}>
               <h2 className="Biginfotitle">Map</h2>
-            </Col>
-            <Row>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25498.690603299907!2d8.835013812935497!3d36.97790444763691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e4caa99b5afd43%3A0x82d5d6489207ccf5!2sBarkoukech%20Beach!5e0!3m2!1sen!2stn!4v1689178920597!5m2!1sen!2stn"
-                className="map"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
-            </Row>
+            </div>
           </Row>
-        </Row>
-        <Row className="det">
+
           <Row>
-            <Col xs={3} lg={1}>
-              <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
-            </Col>
-            <Col xs={9} lg={11}>
-              <h2 className="Biginfotitle">Timeline</h2>
-            </Col>
-            <Row>
-              <div className="timeleinespace">
-                <ul className="timeline timeline-centered">
-                  {event.timeline.map((timeitem) => (
-                    <li className="timeline-item" key={timeitem}>
-                      <div className="timeline-info">
-                        <span>{timeitem.t_when}</span>
-                      </div>
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <h3 className="timeline-title">{timeitem.t_title}</h3>
-                        <p>{timeitem.t_details}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Row>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25498.690603299907!2d8.835013812935497!3d36.97790444763691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e4caa99b5afd43%3A0x82d5d6489207ccf5!2sBarkoukech%20Beach!5e0!3m2!1sen!2stn!4v1689178920597!5m2!1sen!2stn"
+              className="map"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
           </Row>
         </Row>
 
         <Row className="det">
           <Row>
-            <Col xs={3} lg={1}>
-              <FontAwesomeIcon icon={faImages} className="BigiconSp" />
-            </Col>
-            <Col xs={9} lg={11}>
-              <h2 className="Biginfotitle">Gallery: {evento.images.length}</h2>
-            </Col>
+            <div className="pich">
+              <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
+              <h2 className="Biginfotitle">Timeline</h2>
+            </div>
           </Row>
+          <Row>
+            <div className="timeleinespace">
+              <ul className="timeline timeline-centered">
+                {event.timeline.map((timeitem) => (
+                  <li className="timeline-item" key={timeitem}>
+                    <div className="timeline-info">
+                      <span>{timeitem.t_when}</span>
+                    </div>
+                    <div className="timeline-marker"></div>
+                    <div className="timeline-content">
+                      <h3 className="timeline-title">{timeitem.t_title}</h3>
+                      <p>{timeitem.t_details}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Row>
+        </Row>
+
+        <Row className="det">
+          <Row>
+            <div className="pich">
+              <FontAwesomeIcon icon={faImages} className="BigiconSp" />
+              <h2 className="Biginfotitle">Gallery: {event.images.length}</h2>
+            </div>
+          </Row>
+
           <Row className="scroll-container">
-            {evento.images.map((image) => (
+            {event.images.map((image) => (
               <div key={image} className="gallery-col">
                 <ModalComponent
                   imageUrl={image}
@@ -277,100 +277,37 @@ function SpecificScreen() {
         {markdown !== 'undefined' ? (
           <Row className="det">
             <Row>
-              <Col xs={3} lg={1}>
+              <div className="pich">
                 <FontAwesomeIcon
                   icon={faClipboardQuestion}
                   className="BigiconSp"
                 />
-              </Col>
-              <Col xs={9} lg={11}>
                 <h2 className="Biginfotitle">FAQ</h2>
-              </Col>
+              </div>
             </Row>
+
             <div
               id="preview"
               dangerouslySetInnerHTML={{ __html: marked(markdown) }}
             ></div>
           </Row>
         ) : null}
-        <Row className="midSp">
-          {event.types.map((type) => (
-            <Row key={type} className="m-0">
-              <Col xs={12} md={4} className="type">
-                {type}
-                {type === 'competition' && (
-                  <FontAwesomeIcon icon={faTrophy} className="icon" />
-                )}
-                {type === 'workshops' && (
-                  <FontAwesomeIcon
-                    icon={faScrewdriverWrench}
-                    className="icon"
-                  />
-                )}
-                {type === 'presentation' && (
-                  <FontAwesomeIcon icon={faPersonChalkboard} className="icon" />
-                )}
-              </Col>
-              <Col className="typedet" md={8}>
-                <h3>details</h3>
-              </Col>
-            </Row>
-          ))}
-        </Row>
-        <Row>
-          <section className="Features">
-            <div className="bloc">
-              <img
-                className="log"
-                src="data:image/png;base64,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"
-              />
-              <div className="text">
-                <h2 className="logotitle">Robotics</h2>
-              </div>
+        <Row className="det">
+          <Row>
+            <div className="pich">
+              <FontAwesomeIcon icon={faHandshake} className="BigiconSp" />
+              <h2 className="Biginfotitle">Sponsored By</h2>
             </div>
-            <div className="vl"></div>
-            <div className="bloc">
-              <img
-                className="log"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFAklEQVR4nO2cOyw0XxTAhxWJt3xY70eoROWRoKIjQUulQb0KFY2KRGdDVAqiQSLxbukVGnSCeBZCY8Muu+efM//4snct36ydmXvuzPklNxKxd865v9l77849SwOGFJrsABgRFkIMFkIMFkIMFkJVSDAYhLm5OWhtbYWsrCzQNI2bZt0Y4Bi3tbXB/Py8PvaCkNvbW2hsbGQBmpybsKmpCe7u7v4XgnZYhib9ZmxuboZQKAQaTlOyg+Gm6WOwsLAAGq4Z0QPS19enT2GMtdzc3EBvb68w9u3t7aBlZ2cLv8Q/ZOzh+vpaGPucnBz8KU4ZjL3Ema5ZiExYCDFYCDFYCDFYiGpCuGmyx0B6ANw0FgKEbwTpAXDTfhDC2Ms/3yGMvbAQYrAQYrAQYrAQYrAQYrhSSCgUAqq4Tsjm5iYUFhYCHlWvrKwANVwlJBAIwJ8/f/7mVlBQAOFwGCjhKiGLi4tCbiUlJUANVwlpaWkRchsdHQVquEbI0dHRl2RPTk6AGq4RMjQ0JOTV2dkJFHGFkOfn5y8V/Gtra0ARVwiZnZ0VciouLhZK/inhCiENDQ1CThMTE0AVxws5ODgQ8klNTYWLiwugiuOF9Pf3C/lghTllSAl5f3+Hl5cX0/p7eHiA9PR0IZ+dnR2gDAkhb29vMDMzA16vFzweD4yNjZnS79TUlJBLdXU1fHx8GHrt0tIS5OfnQ1FRkR4bxugKIRsbG1BbW/slkPPz86T6xYFHAdF9oiCjT4Njt8kYI8bqWCHHx8f6h7M4AUBaWtrfLz3+FpyaovvEqQunMKNCcnNz48aGMWPsjhGCgzIyMqLvduIljAOB00Wy9MZ8PWxgYCCh16+vr38rBWPHHIwKJikE7zr8gJaXl/dtkoODg3B/f5/0ta6urvS1KLr/w8PDhPt5fHwEn8/3pa/PhtPa5OQkvL6+glJCtre3oa6uLm5SVkwD4+PjQv/19fUQiUR+3d/Z2Rl0d3d/G39lZSUsLy8ndQ1bhJyenkJXV9c/EzGTYDCoPxqJvo7f71fmxrJEiIy3+ierq6vCtTIyMuDp6QlUmXpNF7K3tydlMfwkduc2PDwMVmBkc4JjIV1IRUWFLevEd3N9SkqKcF08mLKSn9aX8vLyhNcV04XguiBLiM/nE66JR7ZW89M6iTendCH7+/tSpqxAIKA/6oi+HhY1WIWRKQvHwrWL+mJMRQnKMfNBpbKLuqz9e4sNFSXKbnvtTuTI4ooSOz9P2SLE6rf6kEUVJY59dJLoYri1tZVQRUlmZqbQB344NKMG2NEPFxN5/F5aWmq4H7/fb0lFCZaZWrVOkBTy0wGVUSGRSER/cGhFRUmsEMcfUMU7wsVBKCsr0zcBv6ko8Xg8cHl5aUpMOG1iLBiTq45w3VRR4mghD3EqSnZ3d0F1lBUyFVNRUlVVZbiihDJKCgmHw1BTUyPEOT09DU5ASSE7SVSUUEdJIT09PUlVlFBGOSFXJlWUUEU5IeMmV5RQQykhQQsrSqiglJBViytKKKCUkI6ODlsqSmSijJAzCRUlMlBGiE9CRYkMlBHi9XptqyiRiRJCIpGIsLvCfyCDZT9ORAkhn+cTeDaBzeh5iYooI8QtsBBisBBisBBisBBisBBisBBisBBisBBisBBisBBisBDVhHDTZI+B9AC4aSwECN8I0gPgpkWNgexFjRFhIcRgIcRgIcRgIcRgIUCL/wCMCRKINY9TmQAAAABJRU5ErkJggg=="
-              />
-              <div className="text">
-                <h2 className="logotitle">Coding</h2>
-              </div>
+          </Row>
+          <div className="slider">
+            <div className="slide-track">
+              {event.sponsors.map((sponsor) => (
+                <div className="slide" key={sponsor}>
+                  <img src={sponsor} height="100" width="250" alt="" />
+                </div>
+              ))}
             </div>
-            <div className="vl"></div>
-            <div className="bloc">
-              <img
-                className="log"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFAklEQVR4nO2cOyw0XxTAhxWJt3xY70eoROWRoKIjQUulQb0KFY2KRGdDVAqiQSLxbukVGnSCeBZCY8Muu+efM//4snct36ydmXvuzPklNxKxd865v9l77849SwOGFJrsABgRFkIMFkIMFkIMFkJVSDAYhLm5OWhtbYWsrCzQNI2bZt0Y4Bi3tbXB/Py8PvaCkNvbW2hsbGQBmpybsKmpCe7u7v4XgnZYhib9ZmxuboZQKAQaTlOyg+Gm6WOwsLAAGq4Z0QPS19enT2GMtdzc3EBvb68w9u3t7aBlZ2cLv8Q/ZOzh+vpaGPucnBz8KU4ZjL3Ema5ZiExYCDFYCDFYCDFYiGpCuGmyx0B6ANw0FgKEbwTpAXDTfhDC2Ms/3yGMvbAQYrAQYrAQYrAQYrAQYrhSSCgUAqq4Tsjm5iYUFhYCHlWvrKwANVwlJBAIwJ8/f/7mVlBQAOFwGCjhKiGLi4tCbiUlJUANVwlpaWkRchsdHQVquEbI0dHRl2RPTk6AGq4RMjQ0JOTV2dkJFHGFkOfn5y8V/Gtra0ARVwiZnZ0VciouLhZK/inhCiENDQ1CThMTE0AVxws5ODgQ8klNTYWLiwugiuOF9Pf3C/lghTllSAl5f3+Hl5cX0/p7eHiA9PR0IZ+dnR2gDAkhb29vMDMzA16vFzweD4yNjZnS79TUlJBLdXU1fHx8GHrt0tIS5OfnQ1FRkR4bxugKIRsbG1BbW/slkPPz86T6xYFHAdF9oiCjT4Njt8kYI8bqWCHHx8f6h7M4AUBaWtrfLz3+FpyaovvEqQunMKNCcnNz48aGMWPsjhGCgzIyMqLvduIljAOB00Wy9MZ8PWxgYCCh16+vr38rBWPHHIwKJikE7zr8gJaXl/dtkoODg3B/f5/0ta6urvS1KLr/w8PDhPt5fHwEn8/3pa/PhtPa5OQkvL6+glJCtre3oa6uLm5SVkwD4+PjQv/19fUQiUR+3d/Z2Rl0d3d/G39lZSUsLy8ndQ1bhJyenkJXV9c/EzGTYDCoPxqJvo7f71fmxrJEiIy3+ierq6vCtTIyMuDp6QlUmXpNF7K3tydlMfwkduc2PDwMVmBkc4JjIV1IRUWFLevEd3N9SkqKcF08mLKSn9aX8vLyhNcV04XguiBLiM/nE66JR7ZW89M6iTendCH7+/tSpqxAIKA/6oi+HhY1WIWRKQvHwrWL+mJMRQnKMfNBpbKLuqz9e4sNFSXKbnvtTuTI4ooSOz9P2SLE6rf6kEUVJY59dJLoYri1tZVQRUlmZqbQB344NKMG2NEPFxN5/F5aWmq4H7/fb0lFCZaZWrVOkBTy0wGVUSGRSER/cGhFRUmsEMcfUMU7wsVBKCsr0zcBv6ko8Xg8cHl5aUpMOG1iLBiTq45w3VRR4mghD3EqSnZ3d0F1lBUyFVNRUlVVZbiihDJKCgmHw1BTUyPEOT09DU5ASSE7SVSUUEdJIT09PUlVlFBGOSFXJlWUUEU5IeMmV5RQQykhQQsrSqiglJBViytKKKCUkI6ODlsqSmSijJAzCRUlMlBGiE9CRYkMlBHi9XptqyiRiRJCIpGIsLvCfyCDZT9ORAkhn+cTeDaBzeh5iYooI8QtsBBisBBisBBisBBisBBisBBisBBisBBisBBisBBisBDVhHDTZI+B9AC4aSwECN8I0gPgpkWNgexFjRFhIcRgIcRgIcRgIcRgIUCL/wCMCRKINY9TmQAAAABJRU5ErkJggg=="
-              />
-              <div className="text">
-                <h2 className="logotitle">
-                  Renewable<h2 className="logotitle">Energy</h2>
-                </h2>
-              </div>
-            </div>
-            <div className="vl"></div>
-            <div className="bloc">
-              <img
-                className="log"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAACKElEQVR4nO2bUU7DMBBE56uXaPkD7kA5XykcBVX9olwAKzehfIFEuYBRJEeKoro0TWzPhnmSpTpdabMre6qJG0AIIYQQQkTwYbDG0ePVwP7MADwB+Gg1cA9gHb4rHUfPY6uA7nggiKNnH276rnVt2VoRpePM6p7vXC8VR8ECwAbAz4ltwz7qe98CuCnRvC+CBow16lrmORu4CYlfcicemfred6GW55yJm207h32uQi3fOZNSirKletTAgaiBA1EDB6IG9uSYSfeYDj71w4eYSZ8KyR8+dE36VBs4+sOH2Ir7q4EVAEc8j9XZnQ9eKJc20AF4I57H6uzOR9tpzRZeRhJap13Pffj8PmaC9T/8EVmNmWAWmtisxL4aWJpzNbBZeavUZyh9NbA0fTUwOVPdwsmQE8nsRCrDGkjhRJxhDaRwItagcyLWoHMilVENpHEizqgG0jgRa9A5EWvQOZHKsAZSOBFnWAN1JnIBdE7EGnROpDKugcWdiDOqgTROxBp0TsQadE6kMqqBNE7EGdfA5Ex1CydDZyKFz0Qqsjm9E3Fk/4XRmUhi6JyINeREBiInMjUnYg06J2INOZGBqIHWGngICRewT5HXXbch6c54E+t7fw211C+RZ+MWwGfk59/qK//XyMw8vCbfbGeL4xBWXvbmXSrK/kxLmDqOnn3nECp2WFMqjp71iW2zIoijZ3bE+h2zSKXiTOHP1J9ScfR4NVAIIYQQAmz8AnMAd1rgLvCIAAAAAElFTkSuQmCC"
-              />
-              <div className="text">
-                <h2 className="logotitle">Electronics</h2>
-              </div>
-            </div>
-            <div className="vl"></div>
-            <div className="bloc">
-              <img
-                className="log"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADVElEQVR4nO2av2sUQRTHPwSMF7FQQxAPMRoI2CpGDWIjVpI05/9gJaiFRRpjKcQzWNoGtBCx0NJGC0URGxEE4Qqbu8JrjMGomBtZeAvDcDv742bvds75wuPu9t68efPdN+/N7CwEBCShBqwDHUB5Km3gnowlN9YrMABX0ixCQEcaL+AvzmiRkBtKxHcUHocKBBAiQHlSHWzZ3vkUWPcs2zsnoFPB6mDL9s4JUBXNDc79VQ4NFg3pUfmbyWBVJcnfShCQFV4QkAdFCXDRRyCACkRAW9qczqB71lLSvI2AZoG5vDZCf50brAkJcSTYJNK5C+weJwLSbJRhc2DbKhBAKREwZ4mA6L+xjYAp4DawrdmYEYl/b4vOVAX8xaXBZaCltf0unx9F9GtKdJdH6K8zg4eBx1qbL8Al4IhByFcJ/wvAJ+368xzTolIETALXgC3R3ZLQ1ktbTEI8+Bi7pG0cET+lbc0nAlqi0wMeAvUEvaMi/VCXtj1tWpTlr3ODygjj6G7nxSFgQyNAlehvaQTEGX8TuClTIw2Tortp2PCSgDmJADMJJsFMgi+A4z4TEOMi8NmYFseMarFhKYPeE4Bk8VXJ6nF2vyWiX1vtk/HHgoCku52l5o8VATGWNL3ouw1jSYBrvUAAIQKoxBRoaDpp54dZnFvQ9Bol+OvM4CngpZHZe5LxZ3L2EWE/cB/4a9h8C5xz4G8qshqcBR5pa/ZoF7di1PwucAWYyNDHhOh2jbXBirZD7Emfs6MkYK/xhOcP8AA4aKn5H4BFSx8ngTeWtcEB4A7wS/7/LVGybxQEfNPuxhNg3mJrSdsi7whR05qtabm2I79bKWuDeemzZ/gyVAIU8Nq4ozaYS+E4xPXvSUvhJCyKD7pPWceRijSDtoxsQxTSzwynlVwr+lS4kcHf3FCuDRqId4hp4Z4V3hGAhHqh93hHSUA7x0nvsGA7UXZOQLPP/K2KrA2DgFqOk95hie1E2TkBviEQQIkRoIYUKf36ydp3IICQAwhJkAHmnQucB97LljmtpEVb3VfAiXGpAnXgR4Ha3pVtsvcE3BA77+QxVxr2aOeJ1x30X3gcbUdr/qdi52qONpelTdR2EBR967Tya/6y3zqt7Jo/rxR96zSA/wX/ABETbYcUim2kAAAAAElFTkSuQmCC"
-              />
-              <div className="text">
-                <h2 className="logotitle">3D Printing</h2>
-              </div>
-            </div>
-          </section>
+          </div>
         </Row>
       </Container>
     </div>

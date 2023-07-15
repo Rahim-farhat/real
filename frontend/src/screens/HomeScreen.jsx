@@ -81,6 +81,7 @@ function HomeScreen() {
               </Row>
 
               <div className="event up" key={event.slug}>
+                <span className="ribbon">-1 day</span>
                 <Row className="text-decoration-none">
                   <h1 className="title">{event.name}</h1>
                 </Row>
