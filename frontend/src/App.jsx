@@ -30,6 +30,12 @@ function App() {
   //const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
+  const handleNavItemClick = () => {
+    setShowOffcanvas(false); // Close the Offcanvas when a navigation item is clicked
+  };
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -44,12 +50,12 @@ function App() {
     fetchCategories();
   }, []);
 
-  const expand = 'false';
+  /*const expand = 'false';*/
   return (
     <BrowserRouter>
       <div>
         <header>
-          <Navbar fixed="top" expand={expand} className="mb-3 navbar">
+          <Navbar fixed="top" expand="lg" className="mb-3 navbar">
             <Container fluid>
               <Container className="topo">
                 <LinkContainer to="/">
@@ -58,38 +64,48 @@ function App() {
                   </Navbar.Brand>
                 </LinkContainer>
 
-                <div className="d-none d-sm-block">{/*<SearchBox />*/}</div>
+                <div className="d-none d-sm-block">{/* <SearchBox /> */}</div>
                 <Navbar.Toggle
-                  aria-controls={`offcanvasNavbar-expand-${expand}`}
+                  aria-controls="offcanvasNavbar"
                   className="toggle"
-                ></Navbar.Toggle>
+                  onClick={() => setShowOffcanvas((prevState) => !prevState)}
+                />
               </Container>
 
-              <Navbar.Offcanvas
-                aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                placement="start"
-              >
-                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title>Categories</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                  <div className="d-sm-none">{/*<SearchBox />*/}</div>
-                  <Nav className="justify-content-end flex-grow-1 pe-3">
-                    {categories.map((category) => (
-                      <Nav.Item key={category}>
-                        <LinkContainer
-                          to={{
-                            pathname: '/search',
-                            search: `category=${category}`,
-                          }}
-                        >
-                          <Nav.Link className="catego">{category}</Nav.Link>
-                        </LinkContainer>
-                      </Nav.Item>
-                    ))}
-                  </Nav>
-                </Offcanvas.Body>
-              </Navbar.Offcanvas>
+              <Navbar.Collapse id="offcanvasNavbar">
+                <Navbar.Offcanvas
+                  show={showOffcanvas}
+                  onHide={() => setShowOffcanvas(false)}
+                  placement="start"
+                  aria-labelledby="offcanvasNavbarLabel"
+                >
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Categories</Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <div className="d-sm-none">{/* <SearchBox /> */}</div>
+                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                      {categories.map((category) => (
+                        <Nav.Item key={category}>
+                          <LinkContainer
+                            to={{
+                              pathname: '/search',
+                              search: `category=${category}`,
+                            }}
+                          >
+                            <Nav.Link
+                              className="catego"
+                              onClick={handleNavItemClick}
+                            >
+                              {category}
+                            </Nav.Link>
+                          </LinkContainer>
+                        </Nav.Item>
+                      ))}
+                    </Nav>
+                  </Offcanvas.Body>
+                </Navbar.Offcanvas>
+              </Navbar.Collapse>
             </Container>
           </Navbar>
         </header>

@@ -51,7 +51,7 @@ function CategoryScreen() {
       <Helmet>
         <title>{`${category} Events`}</title>
       </Helmet>
-      <h1 className="text-center">{`${category} Events`}</h1>
+      <h3 className="categotitle">{`${category} Events`}</h3>
       {loading ? (
         <LoadingBox />
       ) : error ? (

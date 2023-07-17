@@ -68,130 +68,136 @@ function HomeScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="events">
-          {events.map((event) => (
-            <Container fluid key={event.slug}>
-              <Row xs={2} md={4} lg={6}>
-                <div className="categories overflow-hidden" key={event.slug}>
-                  {event.categories.map((category) => (
-                    <p className="category" key={category}>
-                      {category}
-                    </p>
-                  ))}
-                </div>
-              </Row>
-
-              <div className="event up" key={event.slug}>
-                <span className="ribbon">-1 day</span>
-                <Row className="text-decoration-none">
-                  <h1 className="title">{event.name}</h1>
+          {events
+            .sort((a, b) => {
+              const dateA = new Date(a.year, a.start_m - 1, a.start_d);
+              const dateB = new Date(b.year, b.start_m - 1, b.start_d);
+              return dateA - dateB;
+            })
+            .map((event) => (
+              <Container fluid key={event.slug}>
+                <Row xs={2} md={4} lg={6}>
+                  <div className="categories overflow-hidden" key={event.slug}>
+                    {event.categories.map((category) => (
+                      <p className="category" key={category}>
+                        {category}
+                      </p>
+                    ))}
+                  </div>
                 </Row>
-                <Row>
-                  <Col xs={6} className="d-flex align-items-center">
-                    <div className="mx-0">
-                      <ModalComponent
-                        imageUrl={event.image}
-                        altText={event.name}
-                      />
-                    </div>
-                  </Col>
-                  <Col xs={6} className="ev-details">
-                    <Row className="location">
-                      <Col xs={2} sm={1}>
-                        <FontAwesomeIcon
-                          icon={faMapMarkerAlt}
-                          className="icon"
+
+                <div className="event up" key={event.slug}>
+                  <span className="ribbon">-1 day</span>
+                  <Row className="text-decoration-none">
+                    <h1 className="title">{event.name}</h1>
+                  </Row>
+                  <Row>
+                    <Col xs={6} className="d-flex align-items-center">
+                      <div className="mx-0">
+                        <ModalComponent
+                          imageUrl={event.image}
+                          altText={event.name}
                         />
-                      </Col>
-                      <Col xs={10} sm={11}>
-                        <h6 className="ml-2">{event.where}</h6>
-                      </Col>
-                    </Row>
-
-                    <Row className="location">
-                      <Col xs={2} sm={1}>
-                        <FontAwesomeIcon icon={faUser} className="icon" />
-                      </Col>
-                      <Col xs={10} sm={11}>
-                        <h6 className="ml-2">{event.owner}</h6>
-                      </Col>
-                    </Row>
-                    <Row className="location">
-                      <Col xs={2} sm={1}>
-                        <FontAwesomeIcon icon={faCrown} className="icon" />
-                      </Col>
-                      <Col xs={10} sm={11}>
-                        <h6 className="ml-2">{event.sponsors}</h6>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-                <Row className="middle">
-                  <Col className="date">
-                    {event.start_d === event.end_d ? (
-                      <div className="day">{event.start_d}</div>
-                    ) : (
-                      <div className="day">
-                        {event.start_d}-{event.end_d}
                       </div>
-                    )}
-
-                    {event.start_m === event.end_m ? (
-                      <div className="month">{event.start_m}</div>
-                    ) : (
-                      <div className="month">
-                        {event.start_m}/{event.end_m}
-                      </div>
-                    )}
-
-                    <div className="year">{event.year}</div>
-                  </Col>
-                  <Col>
-                    <Link
-                      to={`/event/${event.slug}`}
-                      className="text-decoration-none "
-                    >
-                      <Button className="seeMoreBt">
-                        <div className="seeMore">
-                          <Col xs={8}>
-                            <h6 className="mt-2">See More</h6>
-                          </Col>
-                          <Col xs={4}>
-                            <FontAwesomeIcon
-                              icon={faCircleChevronRight}
-                              className="icon"
-                            />
-                          </Col>
-                        </div>
-                      </Button>
-                    </Link>
-                  </Col>
-                </Row>
-
-                <Row className="mid">
-                  {event.types.map((type) => (
-                    <Col className="type" key={type}>
-                      {type}
-                      {type === 'competition' && (
-                        <FontAwesomeIcon icon={faTrophy} className="icon" />
-                      )}
-                      {type === 'workshops' && (
-                        <FontAwesomeIcon
-                          icon={faScrewdriverWrench}
-                          className="icon"
-                        />
-                      )}
-                      {type === 'presentation' && (
-                        <FontAwesomeIcon
-                          icon={faPersonChalkboard}
-                          className="icon"
-                        />
-                      )}
                     </Col>
-                  ))}
-                </Row>
-              </div>
-            </Container>
-          ))}
+                    <Col xs={6} className="ev-details">
+                      <Row className="location">
+                        <Col xs={2} sm={1}>
+                          <FontAwesomeIcon
+                            icon={faMapMarkerAlt}
+                            className="icon"
+                          />
+                        </Col>
+                        <Col xs={10} sm={11}>
+                          <h6 className="ml-2">{event.where}</h6>
+                        </Col>
+                      </Row>
+
+                      <Row className="location">
+                        <Col xs={2} sm={1}>
+                          <FontAwesomeIcon icon={faUser} className="icon" />
+                        </Col>
+                        <Col xs={10} sm={11}>
+                          <h6 className="ml-2">{event.owner}</h6>
+                        </Col>
+                      </Row>
+                      <Row className="location">
+                        <Col xs={2} sm={1}>
+                          <FontAwesomeIcon icon={faCrown} className="icon" />
+                        </Col>
+                        <Col xs={10} sm={11}>
+                          <h6 className="ml-2">{event.sponsors}</h6>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                  <Row className="middle">
+                    <Col className="date">
+                      {event.start_d === event.end_d ? (
+                        <div className="day">{event.start_d}</div>
+                      ) : (
+                        <div className="day">
+                          {event.start_d}-{event.end_d}
+                        </div>
+                      )}
+
+                      {event.start_m === event.end_m ? (
+                        <div className="month">{event.start_m}</div>
+                      ) : (
+                        <div className="month">
+                          {event.start_m}/{event.end_m}
+                        </div>
+                      )}
+
+                      <div className="year">{event.year}</div>
+                    </Col>
+                    <Col>
+                      <Link
+                        to={`/event/${event.slug}`}
+                        className="text-decoration-none "
+                      >
+                        <Button className="seeMoreBt">
+                          <div className="seeMore">
+                            <Col xs={8}>
+                              <h6 className="mt-2">See More</h6>
+                            </Col>
+                            <Col xs={4}>
+                              <FontAwesomeIcon
+                                icon={faCircleChevronRight}
+                                className="icon"
+                              />
+                            </Col>
+                          </div>
+                        </Button>
+                      </Link>
+                    </Col>
+                  </Row>
+
+                  <Row className="mid">
+                    {event.types.map((type) => (
+                      <Col className="type" key={type}>
+                        {type}
+                        {type === 'competition' && (
+                          <FontAwesomeIcon icon={faTrophy} className="icon" />
+                        )}
+                        {type === 'workshops' && (
+                          <FontAwesomeIcon
+                            icon={faScrewdriverWrench}
+                            className="icon"
+                          />
+                        )}
+                        {type === 'presentation' && (
+                          <FontAwesomeIcon
+                            icon={faPersonChalkboard}
+                            className="icon"
+                          />
+                        )}
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+              </Container>
+            ))}
         </div>
       )}
     </div>

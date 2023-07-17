@@ -283,7 +283,7 @@ h1 {
 }
 
 .catego {
-  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
   padding-left: 10px;
 }
 .catego:hover {
@@ -816,7 +816,7 @@ button:focus-visible {
 .slider {
   background: white;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  height: 100px;
+  height: auto;
   margin: auto;
   overflow: hidden;
   position: relative;
@@ -831,7 +831,7 @@ button:focus-visible {
     rgba(255, 255, 255, 0) 100%
   );
   content: '';
-  height: 100px;
+  height: auto;
   position: absolute;
   width: 200px;
   z-index: 2;
@@ -852,10 +852,11 @@ button:focus-visible {
   animation: scroll 40s linear infinite;
   display: flex;
   width: calc(250px * 14);
+  align-items: center;
 }
 
 .slide {
-  height: 100px;
+  height: auto;
   width: 250px;
 }
 
@@ -866,4 +867,28 @@ button:focus-visible {
   100% {
     transform: translateX(calc(-250px * 7));
   }
+}
+
+/*phone*/
+
+.phone {
+  color: green;
+}
+
+.phonebox {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.phonenbr {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+/*categories screen*/
+.categotitle {
+  margin-top: 80px;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }

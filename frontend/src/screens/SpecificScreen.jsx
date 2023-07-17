@@ -18,6 +18,7 @@ import {
   faMapLocationDot,
   faMapMarkerAlt,
   faMoneyBill1Wave,
+  faPhoneVolume,
   faTimeline,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
@@ -64,6 +65,10 @@ function SpecificScreen() {
     fetchData();
   }, [slug]);
   const markdown = `${event.faq}`;
+  const details = `${event.details}`;
+  const phone = `${event.phone}`;
+  const map = `${event.map}`;
+  console.log(event.details !== 'undefined');
 
   return loading ? (
     <LoadingBox />
@@ -185,83 +190,109 @@ function SpecificScreen() {
                 <Button>Register</Button>
               </a>
             </Row>
+            {phone !== 'undefined' ? (
+              <Row className="phonebox">
+                <Row className="time">
+                  <Col xs={3} sm={3}>
+                    <FontAwesomeIcon
+                      icon={faPhoneVolume}
+                      className="icon phone"
+                    />
+                  </Col>
+                  <Col xs={9} sm={9}>
+                    <h6 className="ml-2 phone">GSM</h6>
+                  </Col>
+                </Row>
+
+                <Row className="phonenbr">{event.phone}</Row>
+              </Row>
+            ) : null}
           </Col>
         </Row>
-        <Row className="det">
-          <Row>
-            <div className="pich">
-              <FontAwesomeIcon icon={faCircleInfo} className="BigiconSp" />
-              <h2 className="Biginfotitle">Details</h2>
-            </div>
-          </Row>
-
-          <p>{event.details}</p>
-        </Row>
-        <Row className="det">
-          <Row>
-            <div className="pich">
-              <FontAwesomeIcon icon={faMapLocationDot} className="BigiconSp" />
-              <h2 className="Biginfotitle">Map</h2>
-            </div>
-          </Row>
-
-          <Row>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25498.690603299907!2d8.835013812935497!3d36.97790444763691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e4caa99b5afd43%3A0x82d5d6489207ccf5!2sBarkoukech%20Beach!5e0!3m2!1sen!2stn!4v1689178920597!5m2!1sen!2stn"
-              className="map"
-              allowfullscreen=""
-              loading="lazy"
-            ></iframe>
-          </Row>
-        </Row>
-
-        <Row className="det">
-          <Row>
-            <div className="pich">
-              <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
-              <h2 className="Biginfotitle">Timeline</h2>
-            </div>
-          </Row>
-          <Row>
-            <div className="timeleinespace">
-              <ul className="timeline timeline-centered">
-                {event.timeline.map((timeitem) => (
-                  <li className="timeline-item" key={timeitem}>
-                    <div className="timeline-info">
-                      <span>{timeitem.t_when}</span>
-                    </div>
-                    <div className="timeline-marker"></div>
-                    <div className="timeline-content">
-                      <h3 className="timeline-title">{timeitem.t_title}</h3>
-                      <p>{timeitem.t_details}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Row>
-        </Row>
-
-        <Row className="det">
-          <Row>
-            <div className="pich">
-              <FontAwesomeIcon icon={faImages} className="BigiconSp" />
-              <h2 className="Biginfotitle">Gallery: {event.images.length}</h2>
-            </div>
-          </Row>
-
-          <Row className="scroll-container">
-            {event.images.map((image) => (
-              <div key={image} className="gallery-col">
-                <ModalComponent
-                  imageUrl={image}
-                  altText={event.name}
-                  className="galleryimg"
-                />
+        {details !== 'undefined' ? (
+          <Row className="det">
+            <Row>
+              <div className="pich">
+                <FontAwesomeIcon icon={faCircleInfo} className="BigiconSp" />
+                <h2 className="Biginfotitle">Details</h2>
               </div>
-            ))}
+            </Row>
+
+            <p>{event.details}</p>
           </Row>
-        </Row>
+        ) : null}
+        {map !== 'undefined' ? (
+          <Row className="det">
+            <Row>
+              <div className="pich">
+                <FontAwesomeIcon
+                  icon={faMapLocationDot}
+                  className="BigiconSp"
+                />
+                <h2 className="Biginfotitle">Map</h2>
+              </div>
+            </Row>
+
+            <Row>
+              <iframe
+                src={event.map}
+                className="map"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </Row>
+          </Row>
+        ) : null}
+        {event.timeline.length !== 0 ? (
+          <Row className="det">
+            <Row>
+              <div className="pich">
+                <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
+                <h2 className="Biginfotitle">Timeline</h2>
+              </div>
+            </Row>
+            <Row>
+              <div className="timeleinespace">
+                <ul className="timeline timeline-centered">
+                  {event.timeline.map((timeitem) => (
+                    <li className="timeline-item" key={timeitem}>
+                      <div className="timeline-info">
+                        <span>{timeitem.t_when}</span>
+                      </div>
+                      <div className="timeline-marker"></div>
+                      <div className="timeline-content">
+                        <h3 className="timeline-title">{timeitem.t_title}</h3>
+                        <p>{timeitem.t_details}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Row>
+          </Row>
+        ) : null}
+        {event.images.length !== 0 ? (
+          <Row className="det">
+            <Row>
+              <div className="pich">
+                <FontAwesomeIcon icon={faImages} className="BigiconSp" />
+                <h2 className="Biginfotitle">Gallery: {event.images.length}</h2>
+              </div>
+            </Row>
+
+            <Row className="scroll-container">
+              {event.images.map((image) => (
+                <div key={image} className="gallery-col">
+                  <ModalComponent
+                    imageUrl={image}
+                    altText={event.name}
+                    className="galleryimg"
+                  />
+                </div>
+              ))}
+            </Row>
+          </Row>
+        ) : null}
         {markdown !== 'undefined' ? (
           <Row className="det">
             <Row>
@@ -280,23 +311,25 @@ function SpecificScreen() {
             ></div>
           </Row>
         ) : null}
-        <Row className="det">
-          <Row>
-            <div className="pich">
-              <FontAwesomeIcon icon={faHandshake} className="BigiconSp" />
-              <h2 className="Biginfotitle">Sponsored By</h2>
+        {event.sponsors.length !== 0 ? (
+          <Row className="det">
+            <Row>
+              <div className="pich">
+                <FontAwesomeIcon icon={faHandshake} className="BigiconSp" />
+                <h2 className="Biginfotitle">Sponsored By</h2>
+              </div>
+            </Row>
+            <div className="slider">
+              <div className="slide-track">
+                {event.sponsors.map((sponsor) => (
+                  <div className="slide" key={sponsor}>
+                    <img src={sponsor} width="250" alt="" />
+                  </div>
+                ))}
+              </div>
             </div>
           </Row>
-          <div className="slider">
-            <div className="slide-track">
-              {event.sponsors.map((sponsor) => (
-                <div className="slide" key={sponsor}>
-                  <img src={sponsor} height="100" width="250" alt="" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </Row>
+        ) : null}
       </Container>
     </div>
   );
