@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import SpecificScreen from './screens/SpecificScreen';
+import AboutUsScreen from './screens/AboutUsScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { toast } from 'react-toastify';
@@ -20,6 +21,8 @@ import { getError } from './utils';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CategoryScreen from './screens/CategoryScreen';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMeteor } from '@fortawesome/free-solid-svg-icons';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Col';
 //import SearchBox from '../components/SearchBox';
@@ -49,22 +52,38 @@ function App() {
     };
     fetchCategories();
   }, []);
+  const currentDate = new Date();
+
+  const options = {
+    weekday: 'short', // Short weekday name (e.g., Tue)
+    day: 'numeric', // Day of the month (e.g., 25)
+    month: 'short', // Short month name (e.g., Jul)
+    year: 'numeric', // Full year (e.g., 2023)
+  };
+  const formattedDate = currentDate.toLocaleString('en-US', options);
 
   /*const expand = 'false';*/
   return (
     <BrowserRouter>
       <div>
         <header>
-          <Navbar fixed="top" expand="lg" className="mb-3 navbar">
+          <Navbar fixed="top" expand="false" className="mb-3 navbar">
             <Container fluid>
               <Container className="topo">
-                <LinkContainer to="/">
+                <LinkContainer to="/events">
                   <Navbar.Brand className="logo">
-                    My Newest App Ever
+                    <div className="picht">
+                      Explore
+                      <FontAwesomeIcon icon={faMeteor} className="BigiconSp" />
+                    </div>
                   </Navbar.Brand>
                 </LinkContainer>
 
-                <div className="d-none d-sm-block">{/* <SearchBox /> */}</div>
+                <LinkContainer to="/">
+                  <Navbar.Brand className="appname">Eventassium</Navbar.Brand>
+                </LinkContainer>
+                {/*
+                <div className="d-none d-sm-block">{ <SearchBox /> }</div>*/}
                 <Navbar.Toggle
                   aria-controls="offcanvasNavbar"
                   className="toggle"
@@ -114,14 +133,25 @@ function App() {
         <Container className="mt-5">
           <Routes>
             <Route path="/event/:slug" element={<SpecificScreen />} />
-            <Route path="/" element={<HomeScreen />} />
+            <Route path="/events" element={<HomeScreen />} />
             <Route path="/search" element={<CategoryScreen />} />
+            <Route path="/" element={<AboutUsScreen />} />
             {/*<Route path="/search" element={<SearchScreen />} />*/}
           </Routes>
         </Container>
       </main>
       <footer>
-        <div className="text-center">-All rights reserved-</div>
+        <div className="text-center mt-2">
+          <div className="dot">
+            <div className="ring-container">
+              <div className="ringring"></div>
+              <div className="circle"></div>
+            </div>
+            <p>Today: {formattedDate}</p>
+          </div>
+
+          <p>-All rights reserved-</p>
+        </div>
       </footer>
     </BrowserRouter>
   );

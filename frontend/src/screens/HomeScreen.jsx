@@ -9,17 +9,18 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import {
-  faCrown,
   faMapMarkerAlt,
-  faPersonChalkboard,
-  faScrewdriverWrench,
-  faTrophy,
+  //faPersonChalkboard,
+  //faScrewdriverWrench,
+  //faTrophy,
   faUser,
-  faCircleChevronRight,
+  //faCircleChevronRight,
+  faArrowsDownToPeople,
 } from '@fortawesome/free-solid-svg-icons';
 import ModalComponent from '../../components/imageFull';
+import { getDaysLeft } from '../../components/daysleft';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -56,11 +57,92 @@ function HomeScreen() {
 
     fetchData();
   }, []);
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  useEffect(() => {
+    const slide = () => {
+      var slides = document.querySelectorAll('.slide');
+
+      for (var i = 0; i < slides.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = slides[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          slides[i].classList.add('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', slide);
+
+    return () => {
+      window.removeEventListener('scroll', slide);
+    };
+  }, []);
+
+  useEffect(() => {
+    const typanim = () => {
+      var typanims = document.querySelectorAll('.typanim');
+
+      for (var i = 0; i < typanims.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = typanims[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          typanims[i].classList.add('active');
+        } else {
+          typanims[i].classList.remove('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', typanim);
+
+    return () => {
+      window.removeEventListener('scroll', typanim);
+    };
+  }, []);
+
+  useEffect(() => {
+    const reveal = () => {
+      var reveals = document.querySelectorAll('.reveal');
+
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', reveal);
+
+    return () => {
+      window.removeEventListener('scroll', reveal);
+    };
+  }, []);
 
   return (
     <div>
       <Helmet>
-        <title>MyApp Obviously</title>
+        <title>Eventassium</title>
       </Helmet>
       {loading ? (
         <LoadingBox />
@@ -79,7 +161,7 @@ function HomeScreen() {
                 <Row xs={2} md={4} lg={6}>
                   <div className="categories overflow-hidden" key={event.slug}>
                     {event.categories.map((category) => (
-                      <p className="category" key={category}>
+                      <p className="category slide" key={category}>
                         {category}
                       </p>
                     ))}
@@ -87,12 +169,22 @@ function HomeScreen() {
                 </Row>
 
                 <div className="event up" key={event.slug}>
-                  <span className="ribbon">-1 day</span>
+                  <span className="ribbon">
+                    {getDaysLeft(event.start_d, event.start_m, event.year)}
+                  </span>
                   <Row className="text-decoration-none">
                     <h1 className="title">{event.name}</h1>
                   </Row>
                   <Row>
-                    <Col xs={6} className="d-flex align-items-center">
+                    <Col
+                      xs={7}
+                      sm={6}
+                      md={6}
+                      lg={5}
+                      xl={5}
+                      xxl={4}
+                      className="d-flex align-items-center"
+                    >
                       <div className="mx-0">
                         <ModalComponent
                           imageUrl={event.image}
@@ -100,38 +192,54 @@ function HomeScreen() {
                         />
                       </div>
                     </Col>
-                    <Col xs={6} className="ev-details">
-                      <Row className="location">
-                        <Col xs={2} sm={1}>
+                    <Col
+                      xs={5}
+                      sm={6}
+                      md={6}
+                      lg={7}
+                      xl={7}
+                      xxl={9}
+                      className="ev-details"
+                    >
+                      <Row>
+                        <div className="outitle">
                           <FontAwesomeIcon
                             icon={faMapMarkerAlt}
-                            className="icon"
+                            className="outicon"
                           />
-                        </Col>
-                        <Col xs={10} sm={11}>
-                          <h6 className="ml-2">{event.where}</h6>
-                        </Col>
+                          <h6 className="outinfotitle">Location</h6>
+                        </div>
+                        <Row>
+                          <h6 className="info reveal">{event.where}</h6>
+                        </Row>
                       </Row>
-
-                      <Row className="location">
-                        <Col xs={2} sm={1}>
-                          <FontAwesomeIcon icon={faUser} className="icon" />
-                        </Col>
-                        <Col xs={10} sm={11}>
-                          <h6 className="ml-2">{event.owner}</h6>
-                        </Col>
+                      <Row>
+                        <div className="outitle">
+                          <FontAwesomeIcon icon={faUser} className="outicon" />
+                          <h6 className="outinfotitle">Organized by</h6>
+                        </div>
+                        <Row>
+                          <h6 className="info reveal">{event.owner}</h6>
+                        </Row>
                       </Row>
-                      <Row className="location">
-                        <Col xs={2} sm={1}>
-                          <FontAwesomeIcon icon={faCrown} className="icon" />
-                        </Col>
-                        <Col xs={10} sm={11}>
-                          <h6 className="ml-2">{event.sponsors}</h6>
-                        </Col>
+                      <Row>
+                        <div className="outitle">
+                          <FontAwesomeIcon
+                            icon={faArrowsDownToPeople}
+                            className="outicon"
+                          />
+                          <h6 className="outinfotitle">Target</h6>
+                        </div>
+                        <Row>
+                          <h6 className="info reveal">{event.target}</h6>
+                        </Row>
                       </Row>
                     </Col>
                   </Row>
                   <Row className="middle">
+                    <Col className="date month">
+                      {getDaysLeft(event.start_d, event.start_m, event.year)}
+                    </Col>
                     <Col className="date">
                       {event.start_d === event.end_d ? (
                         <div className="day">{event.start_d}</div>
@@ -142,10 +250,10 @@ function HomeScreen() {
                       )}
 
                       {event.start_m === event.end_m ? (
-                        <div className="month">{event.start_m}</div>
+                        <div className="month">{months[event.start_m - 1]}</div>
                       ) : (
                         <div className="month">
-                          {event.start_m}/{event.end_m}
+                          {months[event.start_m - 1]}/{months[event.end_m - 1]}
                         </div>
                       )}
 
@@ -156,6 +264,13 @@ function HomeScreen() {
                         to={`/event/${event.slug}`}
                         className="text-decoration-none "
                       >
+                        <button className="learn-more dot">
+                          <span className="circlemore" aria-hidden="true">
+                            <span className="icon arrow"></span>
+                          </span>
+                          <span className="button-text">Learn More</span>
+                        </button>
+                        {/*
                         <Button className="seeMoreBt">
                           <div className="seeMore">
                             <Col xs={8}>
@@ -168,31 +283,16 @@ function HomeScreen() {
                               />
                             </Col>
                           </div>
-                        </Button>
+                        </Button>*/}
                       </Link>
                     </Col>
                   </Row>
 
                   <Row className="mid">
                     {event.types.map((type) => (
-                      <Col className="type" key={type}>
+                      <span className="typanim" key={type}>
                         {type}
-                        {type === 'competition' && (
-                          <FontAwesomeIcon icon={faTrophy} className="icon" />
-                        )}
-                        {type === 'workshops' && (
-                          <FontAwesomeIcon
-                            icon={faScrewdriverWrench}
-                            className="icon"
-                          />
-                        )}
-                        {type === 'presentation' && (
-                          <FontAwesomeIcon
-                            icon={faPersonChalkboard}
-                            className="icon"
-                          />
-                        )}
-                      </Col>
+                      </span>
                     ))}
                   </Row>
                 </div>

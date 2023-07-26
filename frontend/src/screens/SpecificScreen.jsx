@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/esm/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowsDownToPeople,
+  faBars,
   faCircleInfo,
   faClipboardQuestion,
   faClock,
@@ -22,7 +23,7 @@ import {
   faTimeline,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import marked from 'https://cdn.skypack.dev/marked@3.0.0';
 import ModalComponent from '../../components/imageFull';
 
@@ -64,6 +65,53 @@ function SpecificScreen() {
 
     fetchData();
   }, [slug]);
+  useEffect(() => {
+    const reveal = () => {
+      var reveals = document.querySelectorAll('.reveal');
+
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', reveal);
+
+    return () => {
+      window.removeEventListener('scroll', reveal);
+    };
+  }, []);
+  useEffect(() => {
+    const revealtext = () => {
+      var reveals = document.querySelectorAll('.revealtext');
+
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', revealtext);
+
+    return () => {
+      window.removeEventListener('scroll', revealtext);
+    };
+  }, []);
+
   const markdown = `${event.faq}`;
   const details = `${event.details}`;
   const phone = `${event.phone}`;
@@ -86,7 +134,57 @@ function SpecificScreen() {
         <Row className="mainimg">
           <img src={event.image} alt={event.name} />
         </Row>
-        <Row className="topSp">
+        <Row className="secnavbar">
+          <div className="navbaro">
+            <a className="activo" href="#basic">
+              <FontAwesomeIcon icon={faBars} className="iconSp mb--10" />
+              About it
+            </a>
+            <a
+              className={details !== 'undefined' ? '' : 'inactivebutton'}
+              href="#details"
+            >
+              <FontAwesomeIcon icon={faCircleInfo} className="iconSp" />
+              Details
+            </a>
+            <a
+              href="#map"
+              className={map !== 'undefined' ? '' : 'inactivebutton'}
+            >
+              <FontAwesomeIcon icon={faMapLocationDot} className="iconSp" />
+              Map
+            </a>
+            <a
+              href="#gallery"
+              className={event.images.length !== 0 ? '' : 'inactivebutton'}
+            >
+              <FontAwesomeIcon icon={faImages} className="iconSp" />
+              Gallery
+            </a>
+            <a
+              href="#faq"
+              className={markdown !== 'undefined' ? '' : 'inactivebutton'}
+            >
+              <FontAwesomeIcon icon={faClipboardQuestion} className="iconSp" />
+              FAQ
+            </a>
+            <a
+              href="#timeline"
+              className={event.timeline.length !== 0 ? '' : 'inactivebutton'}
+            >
+              <FontAwesomeIcon icon={faTimeline} className="iconSp" />
+              TimeLine
+            </a>
+            <a
+              href="#sponsors"
+              className={event.sponsors.length !== 0 ? '' : 'inactivebutton'}
+            >
+              <FontAwesomeIcon icon={faHandshake} className="iconSp" />
+              Partners
+            </a>
+          </div>
+        </Row>
+        <Row className="topSp" id="basic">
           <Col md={10} className="left">
             <Row className="infoline">
               <Row>
@@ -187,7 +285,18 @@ function SpecificScreen() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button>Register</Button>
+                <button className="regbutton">
+                  <div>
+                    <span>
+                      <p>Register</p>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <p>Now</p>
+                    </span>
+                  </div>
+                </button>
               </a>
             </Row>
             {phone !== 'undefined' ? (
@@ -209,22 +318,23 @@ function SpecificScreen() {
             ) : null}
           </Col>
         </Row>
+
         {details !== 'undefined' ? (
-          <Row className="det">
+          <Row className="det reveal" id="details">
             <Row>
-              <div className="pich">
+              <div className="pich revealtext">
                 <FontAwesomeIcon icon={faCircleInfo} className="BigiconSp" />
                 <h2 className="Biginfotitle">Details</h2>
               </div>
             </Row>
 
-            <p>{event.details}</p>
+            <p className="content">{event.details}</p>
           </Row>
         ) : null}
         {map !== 'undefined' ? (
-          <Row className="det">
+          <Row className="det reveal" id="map">
             <Row>
-              <div className="pich">
+              <div className="pich revealtext">
                 <FontAwesomeIcon
                   icon={faMapLocationDot}
                   className="BigiconSp"
@@ -244,15 +354,15 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {event.timeline.length !== 0 ? (
-          <Row className="det">
+          <Row className="det reveal" id="timeline">
             <Row>
-              <div className="pich">
+              <div className="pich revealtext">
                 <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
                 <h2 className="Biginfotitle">Timeline</h2>
               </div>
             </Row>
             <Row>
-              <div className="timeleinespace">
+              <div className="timeleinespace content">
                 <ul className="timeline timeline-centered">
                   {event.timeline.map((timeitem) => (
                     <li className="timeline-item" key={timeitem}>
@@ -272,9 +382,9 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {event.images.length !== 0 ? (
-          <Row className="det">
+          <Row className="det reveal" id="gallery">
             <Row>
-              <div className="pich">
+              <div className="pich revealtext">
                 <FontAwesomeIcon icon={faImages} className="BigiconSp" />
                 <h2 className="Biginfotitle">Gallery: {event.images.length}</h2>
               </div>
@@ -294,9 +404,9 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {markdown !== 'undefined' ? (
-          <Row className="det">
+          <Row className="det reveal" id="faq">
             <Row>
-              <div className="pich">
+              <div className="pich revealtext">
                 <FontAwesomeIcon
                   icon={faClipboardQuestion}
                   className="BigiconSp"
@@ -307,22 +417,23 @@ function SpecificScreen() {
 
             <div
               id="preview"
+              className="content"
               dangerouslySetInnerHTML={{ __html: marked(markdown) }}
             ></div>
           </Row>
         ) : null}
         {event.sponsors.length !== 0 ? (
-          <Row className="det">
+          <Row className="det reveal" id="sponsors">
             <Row>
-              <div className="pich">
+              <div className="pich revealtext">
                 <FontAwesomeIcon icon={faHandshake} className="BigiconSp" />
-                <h2 className="Biginfotitle">Sponsored By</h2>
+                <h2 className="Biginfotitle">Partners</h2>
               </div>
             </Row>
-            <div className="slider">
+            <div className="slider content">
               <div className="slide-track">
                 {event.sponsors.map((sponsor) => (
-                  <div className="slide" key={sponsor}>
+                  <div className="sliding" key={sponsor}>
                     <img src={sponsor} width="250" alt="" />
                   </div>
                 ))}
