@@ -13,6 +13,8 @@ const eventSchema = new mongoose.Schema({
   phone: { type: String },
   faq: { type: String },
   details: { type: String },
+  boxcolor: { type: String, default: 'lightgrey' },
+  textheadcolor: { type: String, default: '#bfeeff' },
   timeline: {
     type: [
       {

@@ -222,7 +222,7 @@ function HomeScreen() {
                           <h6 className="info reveal">{event.owner}</h6>
                         </Row>
                       </Row>
-                      <Row>
+                      <Row className="d-none d-md-block">
                         <div className="outitle">
                           <FontAwesomeIcon
                             icon={faArrowsDownToPeople}
@@ -237,10 +237,10 @@ function HomeScreen() {
                     </Col>
                   </Row>
                   <Row className="middle">
-                    <Col className="date month">
+                    <Col xs={12} md={4} className="date month">
                       {getDaysLeft(event.start_d, event.start_m, event.year)}
                     </Col>
-                    <Col className="date">
+                    <Col xs={12} md={4} className="date">
                       {event.start_d === event.end_d ? (
                         <div className="day">{event.start_d}</div>
                       ) : (
@@ -259,7 +259,7 @@ function HomeScreen() {
 
                       <div className="year">{event.year}</div>
                     </Col>
-                    <Col>
+                    <Col xs={12} md={4}>
                       <Link
                         to={`/event/${event.slug}`}
                         className="text-decoration-none "
@@ -270,20 +270,6 @@ function HomeScreen() {
                           </span>
                           <span className="button-text">Learn More</span>
                         </button>
-                        {/*
-                        <Button className="seeMoreBt">
-                          <div className="seeMore">
-                            <Col xs={8}>
-                              <h6 className="mt-2">See More</h6>
-                            </Col>
-                            <Col xs={4}>
-                              <FontAwesomeIcon
-                                icon={faCircleChevronRight}
-                                className="icon"
-                              />
-                            </Col>
-                          </div>
-                        </Button>*/}
                       </Link>
                     </Col>
                   </Row>

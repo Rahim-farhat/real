@@ -116,7 +116,27 @@ function SpecificScreen() {
   const details = `${event.details}`;
   const phone = `${event.phone}`;
   const map = `${event.map}`;
-  console.log(event.details !== 'undefined');
+  const boxcolor = `${event.boxcolor}`;
+  const textheadcolor = `${event.textheadcolor}`;
+  const styles = {
+    '--boxcolor': boxcolor,
+    '--textheadcolor': textheadcolor,
+  };
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
   return loading ? (
     <LoadingBox />
@@ -138,49 +158,43 @@ function SpecificScreen() {
           <div className="navbaro">
             <a className="activo" href="#basic">
               <FontAwesomeIcon icon={faBars} className="iconSp mb--10" />
-              About it
+              <div>About it</div>
             </a>
             <a
-              className={details !== 'undefined' ? '' : 'inactivebutton'}
+              className={details !== 'undefined' ? '' : 'd-none'}
               href="#details"
             >
               <FontAwesomeIcon icon={faCircleInfo} className="iconSp" />
-              Details
+              <div>Details</div>
             </a>
-            <a
-              href="#map"
-              className={map !== 'undefined' ? '' : 'inactivebutton'}
-            >
+            <a href="#map" className={map !== 'undefined' ? '' : 'd-none'}>
               <FontAwesomeIcon icon={faMapLocationDot} className="iconSp" />
-              Map
+              <div>Map</div>
             </a>
             <a
               href="#gallery"
-              className={event.images.length !== 0 ? '' : 'inactivebutton'}
+              className={event.images.length !== 0 ? '' : 'd-none'}
             >
               <FontAwesomeIcon icon={faImages} className="iconSp" />
-              Gallery
+              <div>Gallery</div>
             </a>
-            <a
-              href="#faq"
-              className={markdown !== 'undefined' ? '' : 'inactivebutton'}
-            >
+            <a href="#faq" className={markdown !== 'undefined' ? '' : 'd-none'}>
               <FontAwesomeIcon icon={faClipboardQuestion} className="iconSp" />
-              FAQ
+              <div>FAQ</div>
             </a>
             <a
               href="#timeline"
-              className={event.timeline.length !== 0 ? '' : 'inactivebutton'}
+              className={event.timeline.length !== 0 ? '' : 'd-none'}
             >
               <FontAwesomeIcon icon={faTimeline} className="iconSp" />
-              TimeLine
+              <div>Timeline</div>
             </a>
             <a
               href="#sponsors"
-              className={event.sponsors.length !== 0 ? '' : 'inactivebutton'}
+              className={event.sponsors.length !== 0 ? '' : 'd-none'}
             >
               <FontAwesomeIcon icon={faHandshake} className="iconSp" />
-              Partners
+              <div>Partners</div>
             </a>
           </div>
         </Row>
@@ -262,10 +276,10 @@ function SpecificScreen() {
               )}
 
               {event.start_m === event.end_m ? (
-                <div className="month">{event.start_m}</div>
+                <div className="month">{months[event.start_m - 1]}</div>
               ) : (
                 <div className="month">
-                  {event.start_m}/{event.end_m}
+                  {months[event.start_m - 1]}/{months[event.end_m - 1]}
                 </div>
               )}
 
@@ -320,7 +334,7 @@ function SpecificScreen() {
         </Row>
 
         {details !== 'undefined' ? (
-          <Row className="det reveal" id="details">
+          <Row className="det reveal" id="details" style={styles}>
             <Row>
               <div className="pich revealtext">
                 <FontAwesomeIcon icon={faCircleInfo} className="BigiconSp" />
@@ -332,7 +346,7 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {map !== 'undefined' ? (
-          <Row className="det reveal" id="map">
+          <Row className="det reveal" id="map" style={styles}>
             <Row>
               <div className="pich revealtext">
                 <FontAwesomeIcon
@@ -354,7 +368,7 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {event.timeline.length !== 0 ? (
-          <Row className="det reveal" id="timeline">
+          <Row className="det reveal" id="timeline" style={styles}>
             <Row>
               <div className="pich revealtext">
                 <FontAwesomeIcon icon={faTimeline} className="BigiconSp" />
@@ -382,11 +396,14 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {event.images.length !== 0 ? (
-          <Row className="det reveal" id="gallery">
-            <Row>
+          <Row className="det reveal" id="gallery" style={styles}>
+            <Row className="d-flex justify-content-between">
               <div className="pich revealtext">
                 <FontAwesomeIcon icon={faImages} className="BigiconSp" />
-                <h2 className="Biginfotitle">Gallery: {event.images.length}</h2>
+                <h2 className="Biginfotitle">Gallery</h2>
+              </div>
+              <div className="revealtext number">
+                <h2 className="Biginfotitle">{event.images.length}</h2>
               </div>
             </Row>
 
@@ -404,7 +421,7 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {markdown !== 'undefined' ? (
-          <Row className="det reveal" id="faq">
+          <Row className="det reveal" id="faq" style={styles}>
             <Row>
               <div className="pich revealtext">
                 <FontAwesomeIcon
@@ -423,7 +440,7 @@ function SpecificScreen() {
           </Row>
         ) : null}
         {event.sponsors.length !== 0 ? (
-          <Row className="det reveal" id="sponsors">
+          <Row className="det reveal" id="sponsors" style={styles}>
             <Row>
               <div className="pich revealtext">
                 <FontAwesomeIcon icon={faHandshake} className="BigiconSp" />

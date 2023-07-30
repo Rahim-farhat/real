@@ -22,7 +22,8 @@ import { getError } from './utils';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CategoryScreen from './screens/CategoryScreen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMeteor } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMeteor } from '@fortawesome/free-solid-svg-icons';
+import Button from 'react-bootstrap/esm/Button';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Col';
 //import SearchBox from '../components/SearchBox';
@@ -83,12 +84,19 @@ function App() {
                   <Navbar.Brand className="appname">Eventassium</Navbar.Brand>
                 </LinkContainer>
                 {/*
-                <div className="d-none d-sm-block">{ <SearchBox /> }</div>*/}
+                <div className="d-none d-sm-block">{ <SearchBox /> }</div>
                 <Navbar.Toggle
+                  aria-controls="offcanvasNavbar"
+                  className="toggle lighter-toggle"
+                  onClick={() => setShowOffcanvas((prevState) => !prevState)}
+                />*/}
+                <Button
                   aria-controls="offcanvasNavbar"
                   className="toggle"
                   onClick={() => setShowOffcanvas((prevState) => !prevState)}
-                />
+                >
+                  <FontAwesomeIcon icon={faBars} className="BigiconSp" />
+                </Button>
               </Container>
 
               <Navbar.Collapse id="offcanvasNavbar">
