@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 //import data from '../data';
 import axios from 'axios';
@@ -18,9 +18,12 @@ import {
   faUser,
   //faCircleChevronRight,
   faArrowsDownToPeople,
+  faAnglesUp,
+  faCircleXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import ModalComponent from '../../components/imageFull';
 import { getDaysLeft } from '../../components/daysleft';
+import { getDaysLeftnumber } from '../../components/daysleftnumber';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -139,6 +142,21 @@ function HomeScreen() {
     };
   }, []);
 
+  const [sortingOption, setSortingOption] = useState('upcoming');
+
+  const filterEvents = (event) => {
+    const daysLeft = getDaysLeftnumber(
+      event.start_d,
+      event.start_m,
+      event.year
+    );
+    if (sortingOption === 'upcoming') {
+      return daysLeft > 0; // Filter upcoming events
+    } else {
+      return daysLeft <= 0; // Filter old events
+    }
+  };
+
   return (
     <div>
       <Helmet>
@@ -150,14 +168,53 @@ function HomeScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="events">
+          <Row className="sorting-buttons">
+            <Col xs={9} md={9}>
+              <button
+                className={`sorting-button ${
+                  sortingOption === 'upcoming' ? 'active' : ''
+                }`}
+                onClick={() => setSortingOption('upcoming')}
+              >
+                <div className="picht">
+                  <div>Upcoming</div>
+                  <FontAwesomeIcon
+                    icon={faAnglesUp}
+                    className="outicon text-success"
+                  />
+                </div>
+              </button>
+            </Col>
+            <Col xs={3} md={3}>
+              <button
+                className={`sorting-button ${
+                  sortingOption === 'old' ? 'active' : ''
+                }`}
+                onClick={() => setSortingOption('old')}
+              >
+                <div className="picht">
+                  <div>Ended</div>
+                  <FontAwesomeIcon
+                    icon={faCircleXmark}
+                    className="outicon text-danger"
+                  />
+                </div>
+              </button>
+            </Col>
+          </Row>
           {events
+            .filter(filterEvents) // Apply the filtering based on sorting option
             .sort((a, b) => {
               const dateA = new Date(a.year, a.start_m - 1, a.start_d);
               const dateB = new Date(b.year, b.start_m - 1, b.start_d);
-              return dateA - dateB;
+              if (sortingOption === 'upcoming') {
+                return dateA - dateB; // Sort upcoming events in ascending order
+              } else {
+                return dateB - dateA; // Sort old events in descending order (newest first)
+              }
             })
             .map((event) => (
-              <Container fluid key={event.slug}>
+              <Container fluid key={event.slug} className="object">
                 <Row xs={2} md={4} lg={6}>
                   <div className="categories overflow-hidden" key={event.slug}>
                     {event.categories.map((category) => (
@@ -170,6 +227,9 @@ function HomeScreen() {
 
                 <div className="event up" key={event.slug}>
                   <span className="ribbon">
+                    {getDaysLeft(event.start_d, event.start_m, event.year)}
+                  </span>
+                  <span className="ribbon pt-10">
                     {getDaysLeft(event.start_d, event.start_m, event.year)}
                   </span>
                   <Row className="text-decoration-none">

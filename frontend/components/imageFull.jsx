@@ -9,7 +9,6 @@ const ModalComponent = ({ imageUrl, altText }) => {
   console.log('started');
   const handleImageClick = () => {
     setModalVisible(true);
-    console.log(imageUrl);
   };
 
   const handleCloseModal = () => {

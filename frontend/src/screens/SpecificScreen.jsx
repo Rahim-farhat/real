@@ -114,6 +114,7 @@ function SpecificScreen() {
 
   const markdown = `${event.faq}`;
   const details = `${event.details}`;
+  const register = `${event.register}`;
   const phone = `${event.phone}`;
   const map = `${event.map}`;
   const boxcolor = `${event.boxcolor}`;
@@ -299,7 +300,11 @@ function SpecificScreen() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="regbutton">
+                <button
+                  className={
+                    register !== 'undefined' ? 'regbutton' : 'disabled'
+                  }
+                >
                   <div>
                     <span>
                       <p>Register</p>
@@ -458,6 +463,11 @@ function SpecificScreen() {
             </div>
           </Row>
         ) : null}
+        <Row>
+          <div className="infoed boxed">
+            Additional details coming soon... Check back later for more info.
+          </div>
+        </Row>
       </Container>
     </div>
   );

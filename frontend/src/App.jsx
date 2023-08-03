@@ -81,7 +81,7 @@ function App() {
                 </LinkContainer>
 
                 <LinkContainer to="/">
-                  <Navbar.Brand className="appname">Eventassium</Navbar.Brand>
+                  <Navbar.Brand className="appname">Eventassium™</Navbar.Brand>
                 </LinkContainer>
                 {/*
                 <div className="d-none d-sm-block">{ <SearchBox /> }</div>
