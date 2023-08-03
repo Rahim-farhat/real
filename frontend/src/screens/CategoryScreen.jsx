@@ -30,7 +30,7 @@ function CategoryScreen() {
       try {
         setLoading(true);
         const response = await axios.get(
-          'https://eventassium.netlify.app/api/events/search',
+          'https://64cbad8605f264000845970c--eventassium.netlify.app/api/events/search',
           {
             params: { category },
           }

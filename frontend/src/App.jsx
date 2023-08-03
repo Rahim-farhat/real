@@ -44,7 +44,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://eventassium.netlify.app/api/events/categories`
+          `https://64cbad8605f264000845970c--eventassium.netlify.app/api/events/categories`
         );
         setCategories(data);
       } catch (err) {

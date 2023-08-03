@@ -50,7 +50,7 @@ function HomeScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const response = await axios.get(
-          'https://eventassium.netlify.app/api/events'
+          'https://64cbad8605f264000845970c--eventassium.netlify.app/api/events'
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
       } catch (error) {
