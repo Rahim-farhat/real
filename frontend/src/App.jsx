@@ -44,7 +44,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://calm-moth-sweater.cyclic.app/api/events/categories`
+          `https://eventassium.netlify.app/api/events/categories`
         );
         setCategories(data);
       } catch (err) {
