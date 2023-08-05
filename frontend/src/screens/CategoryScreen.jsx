@@ -30,7 +30,7 @@ function CategoryScreen() {
       try {
         setLoading(true);
         const response = await axios.get(
-          'https://real-rahim-farhat.vercel.app/api/events/search',
+          'https://calm-moth-sweater.cyclic.app/api/events/search',
           {
             params: { category },
           }

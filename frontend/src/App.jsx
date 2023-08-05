@@ -44,7 +44,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://real-rahim-farhat.vercel.app/api/events/categories`
+          `https://calm-moth-sweater.cyclic.app/api/events/categories`
         );
         setCategories(data);
       } catch (err) {
