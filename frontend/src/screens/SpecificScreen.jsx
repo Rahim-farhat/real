@@ -55,7 +55,7 @@ function SpecificScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const response = await axios.get(
-          `https://eventassium.netlify.app/api/events/slug/${slug}`
+          `https://real-tau.vercel.app/api/events/slug/${slug}`
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
       } catch (error) {

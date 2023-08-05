@@ -44,7 +44,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://eventassium.netlify.app/api/events/categories`
+          `https://real-tau.vercel.app/api/events/categories`
         );
         setCategories(data);
       } catch (err) {

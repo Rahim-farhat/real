@@ -30,7 +30,7 @@ function CategoryScreen() {
       try {
         setLoading(true);
         const response = await axios.get(
-          'https://eventassium.netlify.app/api/events/search',
+          'https://real-tau.vercel.app/api/events/search',
           {
             params: { category },
           }
