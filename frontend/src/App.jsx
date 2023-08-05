@@ -43,7 +43,9 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/events/categories`);
+        const { data } = await axios.get(
+          `https://real-rahim-farhat.vercel.app/api/events/categories`
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));

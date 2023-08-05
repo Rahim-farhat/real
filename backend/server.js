@@ -22,7 +22,11 @@ const app = express();
 
 //app.use('/api/seed', seedRouter);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 app.use('/api/events', eventRouter);
 
