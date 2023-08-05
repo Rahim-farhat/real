@@ -54,9 +54,7 @@ function SpecificScreen() {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const response = await axios.get(
-          `https://real-tau.vercel.app/api/events/slug/${slug}`
-        );
+        const response = await axios.get(`/api/events/slug/${slug}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', payload: error.message });

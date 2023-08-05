@@ -43,9 +43,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(
-          `https://real-tau.vercel.app/api/events/categories`
-        );
+        const { data } = await axios.get(`/api/events/categories`);
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));

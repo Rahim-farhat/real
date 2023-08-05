@@ -29,12 +29,9 @@ function CategoryScreen() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          'https://real-tau.vercel.app/api/events/search',
-          {
-            params: { category },
-          }
-        );
+        const response = await axios.get('/api/events/search', {
+          params: { category },
+        });
         setEvents(response.data);
         setLoading(false);
       } catch (error) {
