@@ -55,7 +55,7 @@ function SpecificScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const response = await axios.get(
-          `https://calm-moth-sweater.cyclic.app/api/events/slug/${slug}`
+          `https://eventassium.onrender.com/api/events/slug/${slug}`
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
       } catch (error) {

@@ -72,7 +72,7 @@ export default function SearchScreen() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://calm-moth-sweater.cyclic.app/api/events/categories`
+          `https://eventassium.onrender.com/api/events/categories`
         );
         setCategories(data);
       } catch (err) {

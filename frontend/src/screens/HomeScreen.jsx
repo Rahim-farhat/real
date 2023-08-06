@@ -50,7 +50,7 @@ function HomeScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const response = await axios.get(
-          'https://calm-moth-sweater.cyclic.app/api/events'
+          'https://eventassium.onrender.com/api/events'
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
       } catch (error) {

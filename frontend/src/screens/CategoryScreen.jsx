@@ -30,7 +30,7 @@ function CategoryScreen() {
       try {
         setLoading(true);
         const response = await axios.get(
-          'https://calm-moth-sweater.cyclic.app/api/events/search',
+          'https://eventassium.onrender.com/api/events/search',
           {
             params: { category },
           }
