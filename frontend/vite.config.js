@@ -18,4 +18,10 @@ export default defineConfig({
       external: ['@fortawesome/fontawesome-svg-core'],
     },
   },
+  resolve: {
+    alias: {
+      '@fortawesome/fontawesome-svg-core':
+        '@fortawesome/fontawesome-svg-core/index.es.js',
+    },
+  },
 });
