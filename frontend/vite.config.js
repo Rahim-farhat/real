@@ -7,21 +7,13 @@ export default defineConfig({
   plugins: [react()],
 });
 */
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      external: ['@fortawesome/fontawesome-svg-core'],
-    },
-  },
-  resolve: {
-    alias: {
-      '@fortawesome/fontawesome-svg-core':
-        '@fortawesome/fontawesome-svg-core/index.es.js',
-    },
+  optimizeDeps: {
+    include: ['@fortawesome/fontawesome-svg-core'],
   },
 });
