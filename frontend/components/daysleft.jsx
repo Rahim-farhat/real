@@ -12,7 +12,7 @@ export function getDaysLeft(day, month, year) {
   } else if (daysDifference === -1) {
     return 'Yesterday';
   } else if (daysDifference > 1) {
-    return `in ${daysDifference} days`;
+    return `Starts in ${daysDifference} days`;
   } else if (daysDifference < -1) {
     return `${Math.abs(daysDifference)} days ago`;
   } else {

@@ -26,6 +26,7 @@ import {
 //import Button from 'react-bootstrap/Button';
 import marked from 'https://cdn.skypack.dev/marked@3.0.0';
 import ModalComponent from '../../components/imageFull';
+import { GoogleDriveLink } from '../../components/googledrivelink';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -153,7 +154,7 @@ function SpecificScreen() {
           <h1 className="titleSp">{event.name}</h1>
         </Row>
         <Row className="mainimg">
-          <img src={event.image} alt={event.name} />
+          <img src={GoogleDriveLink({ link: event.image })} alt={event.name} />
         </Row>
         <Row className="secnavbar">
           <div className="navbaro">

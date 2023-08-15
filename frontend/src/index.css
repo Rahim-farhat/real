@@ -174,6 +174,7 @@ body {
   font-size: 30px;
 
   margin: 0 auto;
+  margin-bottom: -5px;
   padding: 0;
   text-align: center;
   /*letter-spacing: -3px;*/
@@ -182,7 +183,8 @@ body {
 .month {
   color: red;
   font-size: 20px;
-  text-decoration: bold;
+  text-decoration: bolder;
+  font-weight: 600;
   margin: 0;
   padding: 0;
 }
@@ -196,10 +198,14 @@ body {
   margin: 0 auto;
 }
 .date {
-  padding: 0px;
+  padding: 5px;
   margin: auto;
   text-align: center;
   line-height: 1;
+  border: 2px red solid;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
 
   /*
   background-color: antiquewhite;
@@ -496,6 +502,7 @@ button {
 button.learn-more {
   width: 12rem;
   height: auto;
+  margin-top: 15px;
 }
 
 button.learn-more .circlemore {
@@ -651,8 +658,8 @@ button:hover .button-text {
 .modal {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 30vh; /* Location of the box */
+  z-index: 2; /* Sit on top */
+  padding-top: 20vh; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -1144,7 +1151,8 @@ button:hover .button-text {
 }
 
 .typanim.active {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background-color: rgb(214, 214, 214);
 }
 
 .typanim.active:before {
@@ -1299,10 +1307,10 @@ button:hover .button-text {
 }
 
 .loader {
-  background-color: #bbb;
-  border-radius: 8px;
-  border: 2px solid #000000;
+  background-color: #bbbbbbaa;
+  border-radius: 4px;
   padding: 20px;
+  padding-top: 25px;
   align-items: center;
   width: max-content;
 }
@@ -1346,4 +1354,51 @@ button:hover .button-text {
 .sorting-button:hover {
   background-color: #f2f2f2;
   color: black;
+}
+
+/*about us page*/
+.about-us-container {
+  background-color: #ffffffce; /* White background */
+  padding: 30px;
+  margin-top: 100px;
+}
+.heading {
+  color: black; /* Blue color */
+}
+.sub-heading {
+  color: black; /* Red color */
+}
+.description {
+  color: #333; /* Dark gray color */
+}
+.social-button {
+  margin-right: 10px;
+  margin-top: 10px;
+  width: fit-content;
+}
+.slogan-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.slogan {
+  font-size: 20px;
+  color: #666; /* Gray color */
+  margin-right: 5px;
+  width: fit-content;
+}
+.flag {
+  height: 25px;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+
+.ended {
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: rgb(255, 50, 50);
+  color: white;
+  margin-bottom: 10px;
 }

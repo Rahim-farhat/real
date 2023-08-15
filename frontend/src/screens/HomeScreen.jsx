@@ -24,6 +24,7 @@ import {
 import ModalComponent from '../../components/imageFull';
 import { getDaysLeft } from '../../components/daysleft';
 import { getDaysLeftnumber } from '../../components/daysleftnumber';
+import { GoogleDriveLink } from '../../components/googledrivelink';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -160,7 +161,7 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Eventassium</title>
+        <title>EventArk</title>
       </Helmet>
       {loading ? (
         <LoadingBox />
@@ -229,9 +230,6 @@ function HomeScreen() {
                   <span className="ribbon">
                     {getDaysLeft(event.start_d, event.start_m, event.year)}
                   </span>
-                  <span className="ribbon pt-10">
-                    {getDaysLeft(event.start_d, event.start_m, event.year)}
-                  </span>
                   <Row className="text-decoration-none">
                     <h1 className="title">{event.name}</h1>
                   </Row>
@@ -247,7 +245,7 @@ function HomeScreen() {
                     >
                       <div className="mx-0">
                         <ModalComponent
-                          imageUrl={event.image}
+                          imageUrl={GoogleDriveLink({ link: event.image })}
                           altText={event.name}
                         />
                       </div>
@@ -298,6 +296,15 @@ function HomeScreen() {
                   </Row>
                   <Row className="middle">
                     <Col xs={12} md={4} className="date month">
+                      {getDaysLeftnumber(
+                        event.start_d,
+                        event.start_m,
+                        event.year
+                      ) < 0 ? (
+                        <div className="ended">Ended</div>
+                      ) : (
+                        <div></div>
+                      )}
                       {getDaysLeft(event.start_d, event.start_m, event.year)}
                     </Col>
                     <Col xs={12} md={4} className="date">
