@@ -5,9 +5,7 @@ export function GoogleDriveLink({ link }) {
 
   // Transform the Google Drive link if applicable
   const transformedLink = isGoogleDriveLink
-    ? link
-        .replace('/file/d/', '/uc?export=view&id=')
-        .replace('/view?usp=drive_link', '')
+    ? link.replace('/view?usp=sharing', '?raw=true')
     : link;
   console.log('transformedlink=', { transformedLink });
 
