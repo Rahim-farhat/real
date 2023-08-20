@@ -6,7 +6,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const ModalComponent = ({ imageUrl, altText }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log('started');
   const handleImageClick = () => {
     setModalVisible(true);
   };

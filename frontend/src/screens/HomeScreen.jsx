@@ -170,7 +170,7 @@ function HomeScreen() {
       ) : (
         <div className="events">
           <Row className="sorting-buttons">
-            <Col xs={9} md={9}>
+            <Col xs={10} md={10}>
               <button
                 className={`sorting-button ${
                   sortingOption === 'upcoming' ? 'active' : ''
@@ -186,7 +186,7 @@ function HomeScreen() {
                 </div>
               </button>
             </Col>
-            <Col xs={3} md={3}>
+            <Col xs={2} md={2}>
               <button
                 className={`sorting-button ${
                   sortingOption === 'old' ? 'active' : ''
@@ -194,7 +194,6 @@ function HomeScreen() {
                 onClick={() => setSortingOption('old')}
               >
                 <div className="picht">
-                  <div>Ended</div>
                   <FontAwesomeIcon
                     icon={faCircleXmark}
                     className="outicon text-danger"
@@ -227,9 +226,22 @@ function HomeScreen() {
                 </Row>
 
                 <div className="event up" key={event.slug}>
-                  <span className="ribbon">
-                    {getDaysLeft(event.start_d, event.start_m, event.year)}
-                  </span>
+                  {(() => {
+                    const daysLeft = getDaysLeftnumber(
+                      event.start_d,
+                      event.start_m,
+                      event.year
+                    );
+
+                    if (daysLeft > 0 && daysLeft <= 7) {
+                      return <span className="ribbon">This week</span>;
+                    } else if (daysLeft > 7 && daysLeft <= 30) {
+                      return <span className="ribbon">This month</span>;
+                    } else {
+                      return null; // Don't render anything
+                    }
+                  })()}
+
                   <Row className="text-decoration-none">
                     <h1 className="title">{event.name}</h1>
                   </Row>
@@ -243,9 +255,10 @@ function HomeScreen() {
                       xxl={4}
                       className="d-flex align-items-center"
                     >
-                      <div className="mx-0">
+                      <div className="mx-0 image-placeholder">
                         <ModalComponent
                           imageUrl={GoogleDriveLink({ link: event.image })}
+                          alt="dominant color placeholder"
                           altText={event.name}
                         />
                       </div>

@@ -416,11 +416,12 @@ function SpecificScreen() {
             <Row className="scroll-container">
               {event.images.map((image) => (
                 <div key={image} className="gallery-col">
-                  <ModalComponent
+                  {/*<ModalComponent
                     imageUrl={image}
                     altText={event.name}
                     className="galleryimg"
-                  />
+              />*/}
+                  <img src={image} alt={event.name} className="galleryimg" />
                 </div>
               ))}
             </Row>
