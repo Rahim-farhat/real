@@ -25,7 +25,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 //import Button from 'react-bootstrap/Button';
 import marked from 'https://cdn.skypack.dev/marked@3.0.0';
-import ModalComponent from '../../components/imageFull';
+//import ModalComponent from '../../components/imageFull';
 import { GoogleDriveLink } from '../../components/googledrivelink';
 
 const reducer = (state, action) => {
@@ -66,7 +66,9 @@ function SpecificScreen() {
 
     fetchData();
   }, [slug]);
+  /*
   useEffect(() => {
+    
     const reveal = () => {
       var reveals = document.querySelectorAll('.reveal');
 
@@ -112,7 +114,7 @@ function SpecificScreen() {
       window.removeEventListener('scroll', revealtext);
     };
   }, []);
-
+  */
   const markdown = `${event.faq}`;
   const details = `${event.details}`;
   const register = `${event.register}`;

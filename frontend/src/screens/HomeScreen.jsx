@@ -75,7 +75,10 @@ function HomeScreen() {
     'November',
     'December',
   ];
+  /*
   useEffect(() => {
+
+    
     const slide = () => {
       var slides = document.querySelectorAll('.slide');
 
@@ -142,7 +145,7 @@ function HomeScreen() {
       window.removeEventListener('scroll', reveal);
     };
   }, []);
-
+  */
   const [sortingOption, setSortingOption] = useState('upcoming');
 
   const filterEvents = (event) => {
