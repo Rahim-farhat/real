@@ -1132,23 +1132,6 @@ button:hover .button-text {
 /* types animation */
 
 .typanim {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  border-top: 2px solid transparent;
-  border-right: 2px solid transparent;
-  box-sizing: border-box;
-
-  text-align: center;
-  background-color: rgb(214, 214, 214);
-  border-color: #262626;
-}
-
-/*
-.typanim {
   width: fit-content;
   height: auto;
   transition: 0.5s linear;
@@ -1206,7 +1189,7 @@ button:hover .button-text {
   transform: translateX(0);
   transition: 0.3s transform linear, 0.3s height linear 0.5s;
 }
-*/
+
 /* live dot */
 /* Define the container for the elements */
 .ring-container {

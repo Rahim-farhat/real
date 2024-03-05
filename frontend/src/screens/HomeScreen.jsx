@@ -75,6 +75,31 @@ function HomeScreen() {
     'November',
     'December',
   ];
+
+  useEffect(() => {
+    const typanim = () => {
+      var typanims = document.querySelectorAll('.typanim');
+
+      for (var i = 0; i < typanims.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = typanims[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          typanims[i].classList.add('active');
+        } else {
+          typanims[i].classList.remove('active');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', typanim);
+
+    return () => {
+      window.removeEventListener('scroll', typanim);
+    };
+  }, []);
+
   /*
   useEffect(() => {
 
@@ -100,29 +125,7 @@ function HomeScreen() {
     };
   }, []);
 
-  useEffect(() => {
-    const typanim = () => {
-      var typanims = document.querySelectorAll('.typanim');
-
-      for (var i = 0; i < typanims.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = typanims[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
-          typanims[i].classList.add('active');
-        } else {
-          typanims[i].classList.remove('active');
-        }
-      }
-    };
-
-    window.addEventListener('scroll', typanim);
-
-    return () => {
-      window.removeEventListener('scroll', typanim);
-    };
-  }, []);
+  
 
   useEffect(() => {
     const reveal = () => {
