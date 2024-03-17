@@ -1,4 +1,6 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { faMeteor } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Container, Row, Col, Button, Navbar } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 function AboutUsScreen() {
   return (
@@ -40,6 +42,16 @@ function AboutUsScreen() {
               believe in connecting individuals with events that matter to them,
               fostering a vibrant and engaged community.
             </p>
+          </Col>
+        </Row>
+        <Row className="text-center mt-100">
+          <Col>
+            <h3 className="sub-heading">
+              Tap the Explore
+              <FontAwesomeIcon icon={faMeteor} className="BigiconSp" /> Button
+              on the Top Left
+            </h3>
+            <p className="description">To browse the events</p>
           </Col>
         </Row>
         <Row className="text-center">
